@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lean Startup para Proyectos Técnicos (IEEE, MIT & Harvard)</title>
+    <title>Lean Startup para Proyectos Técnicos (IEEE, MIT, Harvard & TRL)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
+    <!-- Google Fonts - Inter & Fira Code -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -15,355 +18,546 @@
         .code-font {
             font-family: 'Fira Code', monospace;
         }
+        /* Custom scrollbar for beautiful terminal-like fields */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen text-slate-100">
 
     <!-- Header -->
     <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="bg-indigo-600 text-white p-2 rounded-lg font-bold shadow-lg shadow-indigo-500/20">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-                    </svg>
+                <div class="bg-indigo-600 text-white p-2.5 rounded-lg font-bold shadow-lg shadow-indigo-500/20 flex items-center justify-center">
+                    <i class="fa-solid fa-microchip text-xl"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
-                        Lean Tech-Startup <span class="text-xs bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded-full">IEEE Edition</span>
+                    <h1 class="text-base sm:text-lg font-bold tracking-tight text-white flex items-center gap-2">
+                        Lean Tech-Startup Accelerator <span class="text-[10px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded-full font-semibold">IEEE Ed. v2.5</span>
                     </h1>
-                    <p class="text-xs text-slate-400">MIT & Harvard Entrepreneurship Framework</p>
+                    <p class="text-xs text-slate-400">Ideación Inteligente, Rigor MIT, Harvard, TRL & Originalidad IA</p>
                 </div>
             </div>
-            <div class="hidden md:flex items-center space-x-2 text-xs text-slate-400">
-                <span>Rigor Académico</span>
-                <span class="text-slate-600">•</span>
-                <span>Validación de Ingeniería</span>
-                <span class="text-slate-600">•</span>
-                <span>Feria de Proyectos</span>
+            <div class="hidden lg:flex items-center space-x-4 text-xs text-slate-400">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-lightbulb text-amber-400"></i> Ideación IA</span>
+                <span class="text-slate-700">•</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-graduation-cap text-indigo-400"></i> MIT & Harvard</span>
+                <span class="text-slate-700">•</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-gauge-high text-emerald-400"></i> Originalidad Web</span>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col lg:flex-row gap-6">
         
-        <!-- Left Panel: Navigation & Guide -->
-        <div class="w-full lg:w-1/3 flex flex-col gap-6">
+        <!-- Left Panel: Navigation & Insights -->
+        <div class="w-full lg:w-1/3 flex flex-col gap-5">
             <!-- Navigation Cards -->
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">Etapas de Desarrollo</h3>
-                <nav class="space-y-2" id="step-nav">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-xl">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
+                    <span>Etapas del Acelerador</span>
+                    <span class="text-[10px] text-indigo-400 bg-indigo-500/5 px-2 py-0.5 rounded border border-indigo-500/10">Feria de Proyectos</span>
+                </h3>
+                <nav class="space-y-1.5" id="step-nav">
                     <!-- Nav Item 1 -->
-                    <button onclick="goToStep(1)" id="nav-btn-1" class="w-full text-left flex items-start p-3 rounded-lg transition-all border border-transparent bg-indigo-950/40 border-indigo-500/30 text-indigo-300">
+                    <button onclick="goToStep(1)" id="nav-btn-1" class="w-full text-left flex items-start p-2.5 rounded-lg transition-all border border-indigo-500/30 bg-indigo-950/40 text-indigo-300">
                         <span class="bg-indigo-900 text-indigo-200 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">1</span>
                         <div>
-                            <p class="font-medium text-sm">Cimientos Académicos</p>
-                            <p class="text-xs text-indigo-400/80">MIT & Harvard Frameworks</p>
+                            <p class="font-semibold text-xs sm:text-sm">Ideación & Originalidad</p>
+                            <p class="text-[10px] text-indigo-400/80">IA Búsqueda de Repetidos</p>
                         </div>
                     </button>
                     <!-- Nav Item 2 -->
-                    <button onclick="goToStep(2)" id="nav-btn-2" class="w-full text-left flex items-start p-3 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">
+                    <button onclick="goToStep(2)" id="nav-btn-2" class="w-full text-left flex items-start p-2.5 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/40 hover:text-slate-200">
                         <span class="bg-slate-800 text-slate-400 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">2</span>
                         <div>
-                            <p class="font-medium text-sm">Mercado & Persona (MIT)</p>
-                            <p class="text-xs text-slate-500">Segmentación & Perfil de Playa</p>
+                            <p class="font-semibold text-xs sm:text-sm">Cimientos Académicos</p>
+                            <p class="text-[10px] text-slate-500">MIT & Harvard Frameworks</p>
                         </div>
                     </button>
                     <!-- Nav Item 3 -->
-                    <button onclick="goToStep(3)" id="nav-btn-3" class="w-full text-left flex items-start p-3 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">
+                    <button onclick="goToStep(3)" id="nav-btn-3" class="w-full text-left flex items-start p-2.5 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/40 hover:text-slate-200">
                         <span class="bg-slate-800 text-slate-400 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">3</span>
                         <div>
-                            <p class="font-medium text-sm">Hipótesis Falsables (HBS)</p>
-                            <p class="text-xs text-slate-500">Formulación Rigurosa Científica</p>
+                            <p class="font-semibold text-xs sm:text-sm">Mercado & Persona (MIT)</p>
+                            <p class="text-[10px] text-slate-500">Segmento Playa & Diferenciador</p>
                         </div>
                     </button>
                     <!-- Nav Item 4 -->
-                    <button onclick="goToStep(4)" id="nav-btn-4" class="w-full text-left flex items-start p-3 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">
+                    <button onclick="goToStep(4)" id="nav-btn-4" class="w-full text-left flex items-start p-2.5 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/40 hover:text-slate-200">
                         <span class="bg-slate-800 text-slate-400 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">4</span>
                         <div>
-                            <p class="font-medium text-sm">Diseño de MVP & Métricas</p>
-                            <p class="text-xs text-slate-500">Arquitectura Técnica y KPI de Ingeniería</p>
+                            <p class="font-semibold text-xs sm:text-sm">Hipótesis & Niveles TRL</p>
+                            <p class="text-[10px] text-slate-500">Falsabilidad Científica y Madurez</p>
                         </div>
                     </button>
                     <!-- Nav Item 5 -->
-                    <button onclick="goToStep(5)" id="nav-btn-5" class="w-full text-left flex items-start p-3 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">
+                    <button onclick="goToStep(5)" id="nav-btn-5" class="w-full text-left flex items-start p-2.5 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/40 hover:text-slate-200">
                         <span class="bg-slate-800 text-slate-400 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">5</span>
                         <div>
-                            <p class="font-medium text-sm">Exportador IEEE Paper</p>
-                            <p class="text-xs text-slate-500">Generador de LaTeX Académico</p>
+                            <p class="font-semibold text-xs sm:text-sm">Diseño de MVP & Equipos</p>
+                            <p class="text-[10px] text-slate-500">Arquitectura Técnica y Estudiantes</p>
+                        </div>
+                    </button>
+                    <!-- Nav Item 6 -->
+                    <button onclick="goToStep(6)" id="nav-btn-6" class="w-full text-left flex items-start p-2.5 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/40 hover:text-slate-200">
+                        <span class="bg-slate-800 text-slate-400 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">6</span>
+                        <div>
+                            <p class="font-semibold text-xs sm:text-sm">Copiloto IA Evaluador</p>
+                            <p class="text-[10px] text-slate-500">Revisión de Legitimidad & TRL</p>
+                        </div>
+                    </button>
+                    <!-- Nav Item 7 -->
+                    <button onclick="goToStep(7)" id="nav-btn-7" class="w-full text-left flex items-start p-2.5 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/40 hover:text-slate-200">
+                        <span class="bg-slate-800 text-slate-400 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">7</span>
+                        <div>
+                            <p class="font-semibold text-xs sm:text-sm">Exportador IEEE LaTeX</p>
+                            <p class="text-[10px] text-slate-500">Paper Final Compilable</p>
                         </div>
                     </button>
                 </nav>
             </div>
 
-            <!-- Theory Insights Card (Contextual) -->
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5" id="theory-card">
-                <div class="flex items-center space-x-2 text-indigo-400 mb-3">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                    <h4 class="font-semibold text-sm">Rigor MIT & Harvard</h4>
+            <!-- Theory Insights Card -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-xl" id="theory-card">
+                <div class="flex items-center space-x-2 text-indigo-400 mb-2.5">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h4 class="font-bold text-xs uppercase tracking-wider">Metodología Académica</h4>
                 </div>
-                <div id="theory-content" class="text-xs text-slate-400 space-y-2 leading-relaxed">
-                    <!-- Dynamic content based on step -->
-                    <p><strong>MIT (Bill Aulet):</strong> Recomienda enfocarse en un solo mercado de playa (Beachhead Market) para dominar el 20% de participación de mercado antes de escalar. Esto mitiga la dispersión de recursos.</p>
-                    <p><strong>Harvard (Thomas Eisenmann):</strong> El enfoque "Hypothesis-Driven" postula que un startup debe formular experimentos científicos claros y métricas antes de comprometer capital. Esto evita el sesgo de confirmación.</p>
+                <div id="theory-content" class="text-xs text-slate-400 space-y-2.5 leading-relaxed">
+                    <!-- Dynamic theory content -->
                 </div>
             </div>
         </div>
 
-        <!-- Right Panel: Interactive Step Workspace -->
+        <!-- Right Panel: Workspaces -->
         <div class="w-full lg:w-2/3 flex flex-col gap-6">
             
-            <!-- Step 1 Workspace -->
-            <div id="step-1-panel" class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-6">
-                <div>
-                    <h2 class="text-xl font-bold text-white">1. Cimientos Académicos: MIT & Harvard Frameworks</h2>
-                    <p class="text-sm text-slate-400 mt-1">Antes de desarrollar tu tecnología para la feria de proyectos, integra los principios ágiles y de negocios más reconocidos de las universidades de élite.</p>
+            <!-- STEP 1: Ideación & Originalidad -->
+            <div id="step-1-panel" class="bg-slate-900 border border-slate-800 rounded-xl p-5 sm:p-6 space-y-5 shadow-xl">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div>
+                        <h2 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-amber-500 animate-pulse"></i> 1. Taller de Ideación & Filtro de Originalidad
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-0.5">Genera ideas disruptivas a partir de términos simples y audita si ya existen proyectos similares en la web.</p>
+                    </div>
+                    <span class="text-xs font-mono text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded">Paso 1 de 7</span>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-lg">
-                        <div class="flex items-center space-x-2 text-indigo-400 mb-2">
-                            <span class="text-xs font-bold px-2 py-0.5 rounded bg-indigo-950 border border-indigo-900">MIT</span>
-                            <span class="font-semibold text-sm">24 Pasos de Disciplined Entrepreneurship</span>
-                        </div>
-                        <ul class="text-xs text-slate-400 space-y-2 list-disc list-inside">
-                            <li><strong>Segmentación de Mercado:</strong> No crees tecnología sin un cliente específico.</li>
-                            <li><strong>Beachhead Market:</strong> Escoge un nicho ultra-enfocado donde puedas ser el líder.</li>
-                            <li><strong>Persona:</strong> Diseña detalladamente al usuario final y comprador tecnológico.</li>
-                            <li><strong>El Núcleo (Core):</strong> Define tu ventaja tecnológica que los competidores no pueden copiar.</li>
-                        </ul>
+                <!-- Input section -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3.5">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Términos o Temas que te suenan (Ej: sensores, agricultura, agua, bajo costo)</label>
+                        <input type="text" id="ideation-keywords" value="agricultura urbana, monitoreo hídrico, IoT, automatización" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500">
                     </div>
-
-                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-lg">
-                        <div class="flex items-center space-x-2 text-emerald-400 mb-2">
-                            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 border border-emerald-900">Harvard</span>
-                            <span class="font-semibold text-sm">Hypothesis-Driven Entrepreneurship</span>
-                        </div>
-                        <ul class="text-xs text-slate-400 space-y-2 list-disc list-inside">
-                            <li><strong>Falsabilidad:</strong> Tus hipótesis deben poder demostrarse falsas con datos irrefutables.</li>
-                            <li><strong>LTV > 3x CAC:</strong> La relación del valor de cliente a costo de adquisición debe ser viable.</li>
-                            <li><strong>Prueba y Error Riguroso:</strong> Planifica experimentos con controles, tal como un estudio científico.</li>
-                            <li><strong>Pivote Sistémico:</strong> Decisiones basadas en el rechazo de hipótesis científicas, no corazonadas.</li>
-                        </ul>
+                    <div class="flex flex-wrap gap-2.5">
+                        <button onclick="generateBrainstormIdeas()" id="btn-brainstorm" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold px-4 py-2 rounded-lg transition-all flex items-center gap-1.5 shadow-md shadow-indigo-500/10">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Generar 3 Ideas Técnicas
+                        </button>
                     </div>
                 </div>
 
-                <div class="border-t border-slate-800 pt-6">
-                    <h3 class="text-sm font-semibold text-white mb-3">Introduce los Datos Base de tu Proyecto</h3>
-                    <div class="space-y-4">
+                <!-- Brainstorming Results Area -->
+                <div id="brainstorm-results-box" class="hidden space-y-3">
+                    <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-wider">Conceptos de Proyectos Propuestos</h3>
+                    <div id="brainstorm-cards" class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <!-- Dynamic generated cards -->
+                    </div>
+                </div>
+
+                <!-- Originality Verification Section -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-4">
+                    <div class="flex items-center justify-between">
                         <div>
-                            <label class="block text-xs text-slate-400 font-semibold mb-1">TÍTULO DEL PROYECTO (Formato Académico IEEE / Feria)</label>
-                            <input type="text" id="proj-title" placeholder="Ej. Un Sistema IoT de Bajo Costo para Monitoreo de Suelos de Cultivo Basado en Edge Computing..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500">
+                            <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Detector de Proyectos Repetidos (Búsqueda en la Web)</h3>
+                            <p class="text-[10px] text-slate-500 mt-0.5">Analiza si tu idea ya abunda en repositorios de ingeniería con Google Search Grounding.</p>
                         </div>
-                        <div>
-                            <label class="block text-xs text-slate-400 font-semibold mb-1">RESUMEN DEL PROYECTO (Abstract Académico - máx. 150 palabras)</label>
-                            <textarea id="proj-abstract" rows="3" placeholder="Este paper presenta el diseño y validación de un sistema que resuelve el problema de..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500"></textarea>
-                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1.5">Idea o Título a Validar Originalidad:</label>
+                        <textarea id="idea-to-check" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500">Prototipo de Monitoreo de Suelos IoT de Bajo Costo con Procesamiento en el Borde para Agricultura Familiar</textarea>
+                    </div>
+                    <button onclick="checkOriginalityWithGrounding()" id="btn-check-originality" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-lg transition-all flex items-center gap-1.5 shadow-md shadow-emerald-500/10">
+                        <i class="fa-solid fa-magnifying-glass"></i> Auditar Originalidad Web & Citas
+                    </button>
+
+                    <!-- Originality Report Output -->
+                    <div id="originality-report-area" class="hidden border border-slate-800 rounded-lg p-3 bg-slate-900/40 text-xs space-y-3 font-mono">
+                        <!-- Generated with sources dynamic -->
                     </div>
                 </div>
 
-                <div class="flex justify-end pt-4">
-                    <button onclick="goToStep(2)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
-                        Siguiente: Mercado & Persona (MIT)
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                <div class="flex justify-end pt-3">
+                    <button onclick="goToStep(2)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold px-4.5 py-2 rounded-lg transition-all flex items-center gap-2">
+                        Siguiente: Cimientos Académicos <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Step 2 Workspace -->
-            <div id="step-2-panel" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-6">
-                <div>
-                    <h2 class="text-xl font-bold text-white">2. Segmentación de Mercado & Beachhead (MIT)</h2>
-                    <p class="text-sm text-slate-400 mt-1">Un error técnico común es querer venderle a todo el mundo. El MIT propone elegir un único "Beachhead Market" (Mercado de Playa) para concentrar fuerzas.</p>
+            <!-- STEP 2: Cimientos (old Step 1) -->
+            <div id="step-2-panel" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-5 sm:p-6 space-y-5 shadow-xl">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div>
+                        <h2 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-circle-info text-indigo-500"></i> 2. Cimientos: MIT & Harvard
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-0.5">Escribe la fundamentación del proyecto bajo marcos de élite universitaria.</p>
+                    </div>
+                    <span class="text-xs font-mono text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded">Paso 2 de 7</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-3.5 bg-slate-950 border border-slate-800 rounded-xl">
+                        <div class="flex items-center space-x-2 text-indigo-400 mb-2">
+                            <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-indigo-950 border border-indigo-900">MIT</span>
+                            <span class="font-bold text-xs tracking-wide uppercase">Disciplined Entrepreneurship</span>
+                        </div>
+                        <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                            <li><strong>Segmentación Rigurosa:</strong> No asumas el mercado; descúbrelo empíricamente.</li>
+                            <li><strong>Beachhead Market:</strong> Domina un nicho antes de gastar recursos de escala.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-3.5 bg-slate-950 border border-slate-800 rounded-xl">
+                        <div class="flex items-center space-x-2 text-emerald-400 mb-2">
+                            <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-950 border border-emerald-900">HARVARD</span>
+                            <span class="font-bold text-xs tracking-wide uppercase">Hypothesis-Driven Design</span>
+                        </div>
+                        <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                            <li><strong>Principio de Falsabilidad:</strong> Formula hipótesis que puedan fallar inequívocamente.</li>
+                            <li><strong>LTV/CAC > 3x:</strong> Viabilidad comercial demostrada matemáticamente.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="space-y-4 pt-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Título del Proyecto (Formato Académico IEEE / Feria)</label>
+                        <input type="text" id="proj-title" value="Prototipo de Monitoreo de Suelos IoT de Bajo Costo con Procesamiento en el Borde para Agricultura Familiar" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Abstract / Resumen Académico (Máx. 150 palabras)</label>
+                        <textarea id="proj-abstract" rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500">Este artículo presenta el diseño e implementación de un sistema basado en Internet de las Cosas (IoT) diseñado para optimizar el riego agrícola. Mediante el uso de microcontroladores de bajo costo y sensores de humedad calibrados, el sistema procesa datos en el borde, logrando reducir la pérdida de cultivos por estrés hídrico. La metodología incluye validaciones comerciales bajo el marco del MIT y la formulación científica de hipótesis bajo el modelo de Harvard.</textarea>
+                    </div>
+                </div>
+
+                <div class="flex justify-between pt-3 border-t border-slate-800">
+                    <button onclick="goToStep(1)" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-xs sm:text-sm font-semibold px-4.5 py-2 rounded-lg transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-arrow-left"></i> Atrás
+                    </button>
+                    <button onclick="goToStep(3)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold px-4.5 py-2 rounded-lg transition-all flex items-center gap-2">
+                        Siguiente: Mercado & Persona (MIT) <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 3: Mercado & Persona (old Step 2) -->
+            <div id="step-3-panel" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-5 sm:p-6 space-y-5 shadow-xl">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div>
+                        <h2 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-bullseye text-indigo-500"></i> 3. Mercado Playa & Persona (MIT)
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-0.5">Define tu nicho inicial de mercado y el perfil detallado del cliente final.</p>
+                    </div>
+                    <span class="text-xs font-mono text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded">Paso 3 de 7</span>
                 </div>
 
                 <div class="space-y-4">
-                    <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-3">
-                        <h3 class="text-xs font-semibold uppercase text-indigo-400">Definición del Beachhead Market</h3>
-                        <p class="text-xs text-slate-400">Define el segmento de clientes más urgente, que tenga acceso a canales similares y que ya esté tratando de solucionar el problema de manera ineficiente.</p>
-                        <input type="text" id="proj-beachhead" placeholder="Ej. Pequeños agricultores de arándanos de la región central que exportan y usan riego manual..." class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+                        <label class="block text-xs font-bold text-indigo-400 uppercase tracking-wide">Beachhead Market (Mercado de Playa)</label>
+                        <p class="text-[11px] text-slate-400">Describe el mercado de playa, un grupo homogéneo de compradores con necesidades idénticas que se comunican entre sí.</p>
+                        <input type="text" id="proj-beachhead" value="Pequeños productores de fresas de invernadero de la región central que exportan y sufren pérdidas por sobre-riego." class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-3">
-                            <h3 class="text-xs font-semibold uppercase text-emerald-400">La Persona del MIT (Usuario Final Clave)</h3>
-                            <p class="text-xs text-slate-400">La representación detallada de tu cliente ideal. No es un dato genérico, define comportamiento y frustraciones reales.</p>
-                            <div class="space-y-2">
-                                <input type="text" id="persona-name" placeholder="Nombre representativo (Ej: Carlos, Agricultor)" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
-                                <textarea id="persona-pains" rows="2" placeholder="Principales dolores y frustraciones..." class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"></textarea>
-                            </div>
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2.5">
+                            <label class="block text-xs font-bold text-emerald-400 uppercase tracking-wide">La Persona del MIT</label>
+                            <p class="text-[11px] text-slate-400">Arquetipo representativo del usuario del Beachhead Market.</p>
+                            <input type="text" id="persona-name" value="Jorge Silva, Agricultor Tecnificado de Invernadero" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                            <textarea id="persona-pains" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500">Incapacidad de monitorizar humedad exacta sin ir físicamente al campo. Teme perder la certificación de exportación por exceso de químicos por humedad.</textarea>
                         </div>
 
-                        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-3">
-                            <h3 class="text-xs font-semibold uppercase text-indigo-400">El "Core" Tecnológico</h3>
-                            <p class="text-xs text-slate-400">Tu ventaja injusta técnica o científica. ¿Qué tiene tu algoritmo, hardware o proceso que es extremadamente difícil de clonar?</p>
-                            <textarea id="proj-core" rows="3" placeholder="Ej. Algoritmo de calibración auto-adaptativo que requiere un 80% menos de energía que las soluciones comerciales existentes..." class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"></textarea>
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2.5">
+                            <label class="block text-xs font-bold text-indigo-400 uppercase tracking-wide">El "Core" (Ventaja Injusta de Ingeniería)</label>
+                            <p class="text-[11px] text-slate-400">La capacidad técnica que tu equipo posee y que es sumamente difícil de copiar.</p>
+                            <textarea id="proj-core" rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500">Diseño propio de antena de radio de ultra bajo consumo y algoritmo de calibración automática del sensor de suelo patentable.</textarea>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex justify-between pt-4 border-t border-slate-800">
-                    <button onclick="goToStep(1)" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                        Atrás
+                <div class="flex justify-between pt-3 border-t border-slate-800">
+                    <button onclick="goToStep(2)" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-xs sm:text-sm font-semibold px-4.5 py-2 rounded-lg transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-arrow-left"></i> Atrás
                     </button>
-                    <button onclick="goToStep(3)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
-                        Siguiente: Formular Hipótesis
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <button onclick="goToStep(4)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold px-4.5 py-2 rounded-lg transition-all flex items-center gap-1.5">
+                        Siguiente: TRL & Hipótesis <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Step 3 Workspace -->
-            <div id="step-3-panel" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-6">
-                <div>
-                    <h2 class="text-xl font-bold text-white">3. Matriz de Hipótesis Falsables (Harvard)</h2>
-                    <p class="text-sm text-slate-400 mt-1">Harvard Business School propone tratar las hipótesis del negocio bajo el método científico. Deben ser específicas, cuantificables y falsables ($H_0$).</p>
+            <!-- STEP 4: Hipótesis & TRL (old Step 3) -->
+            <div id="step-4-panel" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-5 sm:p-6 space-y-5 shadow-xl">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div>
+                        <h2 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-scale-balanced text-indigo-500"></i> 4. Hipótesis & Madurez TRL
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-0.5">Asigna el nivel de madurez técnica legítimo y diseña la falsabilidad científica.</p>
+                    </div>
+                    <span class="text-xs font-mono text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded">Paso 4 de 7</span>
                 </div>
 
-                <div class="space-y-4">
-                    <div class="bg-indigo-950/20 border border-indigo-900/40 p-4 rounded-lg">
-                        <p class="text-xs text-indigo-300 italic">
-                            <strong>Fórmula de Hipótesis Científico-Comercial:</strong><br>
-                            "Creemos que [Segmento de Clientes] experimenta [Problema] y estará dispuesto a hacer [Acción de Validación] utilizando nuestra solución, logrando una tasa de conversión superior a [X]%."
-                        </p>
+                <!-- Interactive TRL Selector -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <label class="block text-xs font-bold text-emerald-400 uppercase tracking-wide">Criterio de Madurez Tecnológica (TRL)</label>
+                        <span id="trl-badge" class="text-xs bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 rounded font-mono font-bold">TRL 3</span>
                     </div>
+                    <p class="text-[11px] text-slate-400">Asegúrate de ser legítimo. Para una feria de proyectos de nivel pre-comercial, típicamente te ubicas entre TRL 3 y TRL 5. Selecciona el nivel real de tu MVP:</p>
+                    
+                    <select id="trl-select" onchange="updateTrlUi()" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                        <option value="1">TRL 1: Observación de principios básicos científicos (No hay hardware/software aún)</option>
+                        <option value="2">TRL 2: Concepto de tecnología formulado (Diseños teóricos e idea de arquitectura)</option>
+                        <option value="3" selected>TRL 3: Prueba de concepto analítica y experimental (Prototipo básico en laboratorio)</option>
+                        <option value="4">TRL 4: Validación de componentes en laboratorio (Pruebas de breadboard con cables)</option>
+                        <option value="5">TRL 5: Validación de componentes en entorno relevante (Simulando condiciones de campo)</option>
+                        <option value="6">TRL 6: Prototipo funcional en entorno operativo (Prueba piloto real con el agricultor)</option>
+                        <option value="7">TRL 7: Demostración de sistema en entorno operativo real (Sistema completo a escala)</option>
+                        <option value="8">TRL 8: Sistema real completado y calificado mediante prueba (Hardware final empaquetado)</option>
+                        <option value="9">TRL 9: Sistema probado con éxito en entorno operativo (Escalado productivo robusto)</option>
+                    </select>
 
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <h3 class="text-xs font-semibold uppercase text-slate-400">Hipótesis del Proyecto</h3>
-                            <button onclick="addHypothesis()" class="text-xs bg-indigo-600/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-600/40 px-2.5 py-1 rounded flex items-center gap-1 transition-all">
-                                <span>+ Agregar Hipótesis</span>
-                            </button>
-                        </div>
-
-                        <!-- Interactive Hypotheses Grid -->
-                        <div class="overflow-x-auto border border-slate-800 rounded-lg">
-                            <table class="w-full text-left border-collapse bg-slate-950 text-xs">
-                                <thead>
-                                    <tr class="bg-slate-900 text-slate-300 border-b border-slate-800">
-                                        <th class="p-3">Código</th>
-                                        <th class="p-3">Hipótesis Formulada (Falsable)</th>
-                                        <th class="p-3">Métrica de Validación (Criterio de Éxito)</th>
-                                        <th class="p-3">Gravedad / Riesgo</th>
-                                        <th class="p-3 text-right">Acción</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="hypotheses-table-body">
-                                    <!-- Populated dynamically via JS -->
-                                </tbody>
-                            </table>
-                        </div>
+                    <div id="trl-feedback-box" class="p-3 bg-indigo-950/20 border border-indigo-900/30 rounded-lg text-xs text-indigo-300">
+                        <!-- Dynamic TRL description -->
                     </div>
                 </div>
 
-                <div class="flex justify-between pt-4 border-t border-slate-800">
-                    <button onclick="goToStep(2)" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                        Atrás
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xs font-bold uppercase text-slate-300 tracking-wider">Matriz de Hipótesis Científicas</h3>
+                        <button onclick="addHypothesis()" class="text-[11px] bg-indigo-600/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-600/40 px-2.5 py-1 rounded flex items-center gap-1 transition-all">
+                            <i class="fa-solid fa-plus"></i> Añadir Hipótesis
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto border border-slate-800 rounded-lg">
+                        <table class="w-full text-left border-collapse bg-slate-950 text-xs">
+                            <thead>
+                                <tr class="bg-slate-900 text-slate-300 border-b border-slate-800">
+                                    <th class="p-3">ID</th>
+                                    <th class="p-3 w-1/2">Hipótesis Formulado (Falsable)</th>
+                                    <th class="p-3">Métrica de Validación (Criterio de Éxito)</th>
+                                    <th class="p-3">Riesgo</th>
+                                    <th class="p-3 text-right">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="hypotheses-table-body">
+                                <!-- Populated dynamically by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="flex justify-between pt-3 border-t border-slate-800">
+                    <button onclick="goToStep(3)" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-xs sm:text-sm font-semibold px-4.5 py-2 rounded-lg transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-arrow-left"></i> Atrás
                     </button>
-                    <button onclick="goToStep(4)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
-                        Siguiente: MVP & Métricas
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <button onclick="goToStep(5)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold px-4.5 py-2 rounded-lg transition-all flex items-center gap-1.5">
+                        Siguiente: MVP & Equipos <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Step 4 Workspace -->
-            <div id="step-4-panel" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-6">
-                <div>
-                    <h2 class="text-xl font-bold text-white">4. Diseño del MVP Técnico & Métricas de Ingeniería</h2>
-                    <p class="text-sm text-slate-400 mt-1">El Producto Mínimo Viable (MVP) para una feria de proyectos de base técnica debe demostrar viabilidad de hardware/software combinada con interés real.</p>
+            <!-- STEP 5: MVP & Equipos (old Step 4) -->
+            <div id="step-5-panel" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-5 sm:p-6 space-y-5 shadow-xl">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div>
+                        <h2 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-people-group text-indigo-500"></i> 5. MVP Técnico & Distribución de Alumnos
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-0.5">Diseña la arquitectura de ingeniería y organiza los integrantes en equipos de trabajo.</p>
+                    </div>
+                    <span class="text-xs font-mono text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded">Paso 5 de 7</span>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-3">
-                        <h3 class="text-xs font-semibold uppercase text-indigo-400">1. Arquitectura Técnica de tu MVP</h3>
-                        <p class="text-xs text-slate-400">Describe el alcance mínimo de ingeniería. ¿Cuál es el núcleo técnico indispensable para realizar la validación?</p>
-                        <textarea id="mvp-tech" rows="3" placeholder="Ej. Un microcontrolador ESP32 con un sensor analógico de humedad conectado a Firebase, mostrando una interfaz simplificada en tiempo real..." class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"></textarea>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+                        <h3 class="text-xs font-bold uppercase text-indigo-400 tracking-wide">Arquitectura del MVP Técnico</h3>
+                        <p class="text-[10px] text-slate-400">Describe el hardware y software mínimo necesario para ejecutar el experimento de campo.</p>
+                        <textarea id="mvp-tech" rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500">Un módulo sensor capacitivo de humedad, microcontrolador ESP32 programado en C++ usando FreeRTOS, enviando mediciones en tiempo real por protocolo MQTT a un broker Mosquitto en la nube y visualizado con Node-RED.</textarea>
                     </div>
 
-                    <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-3">
-                        <h3 class="text-xs font-semibold uppercase text-emerald-400">2. Estrategia de Experimento</h3>
-                        <p class="text-xs text-slate-400">¿Cómo pondrás este MVP técnico frente al cliente para validar tus hipótesis del Paso 3?</p>
-                        <select id="mvp-strategy" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
-                            <option value="conserje">MVP Conserje (Operación manual del servicio técnico detrás de cámaras)</option>
-                            <option value="mago">MVP Mago de Oz (La interfaz funciona, los cálculos/procesamientos los haces tú)</option>
-                            <option value="humo">MVP de Humo / Landing Page (Simulador técnico, captura de emails)</option>
-                            <option value="prototipo">Prototipo Alfa Funcional (Prueba en entorno real con Early Adopters)</option>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+                        <h3 class="text-xs font-bold uppercase text-emerald-400 tracking-wide">Estrategia Experimental</h3>
+                        <p class="text-[10px] text-slate-400">Método de lanzamiento comercial y captura de métricas del MVP.</p>
+                        <select id="mvp-strategy" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                            <option value="conserje">MVP Conserje (Operación manual personalizada)</option>
+                            <option value="mago">MVP Mago de Oz (Detrás de cámaras manual)</option>
+                            <option value="humo">MVP Humo / Landing Page (Simulador previo)</option>
+                            <option value="prototipo" selected>Prototipo Alfa Funcional (Prueba de campo real con Early Adopter)</option>
                         </select>
-                        <textarea id="mvp-experiment-desc" rows="2" placeholder="Especifica cómo ejecutarás este experimento..." class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"></textarea>
+                        <textarea id="mvp-experiment-desc" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500">Instalación del dispositivo en el invernadero de Jorge Silva durante 14 días para capturar datos reales de riego.</textarea>
                     </div>
                 </div>
 
-                <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-4">
-                    <h3 class="text-xs font-semibold uppercase text-indigo-400">3. El Embudo de Validación de Ingeniería</h3>
-                    <p class="text-xs text-slate-400">Asigna métricas de ingeniería o negocio para cada fase del embudo adaptado para tu proyecto.</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        <div class="p-3 bg-slate-900 border border-slate-800 rounded">
-                            <label class="block text-[10px] text-slate-400 font-bold mb-1">ADQUISICIÓN / ATENCIÓN</label>
-                            <input type="text" id="metric-acq" placeholder="Ej. 100 visitas a ficha de GitHub o Web" class="w-full bg-slate-950 border border-slate-800 rounded p-1.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+                <!-- Interactive Team Setup (Dynamic Up to 10 Students) -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-2">
+                        <div>
+                            <h3 class="text-xs font-bold uppercase text-slate-300 tracking-wider">Gestión Escolar de Integrantes de Equipo (Límite: 10 alumnos)</h3>
+                            <p class="text-[10px] text-slate-500">Crea grupos y redistribuye a los alumnos de manera legítima según su participación.</p>
                         </div>
-                        <div class="p-3 bg-slate-900 border border-slate-800 rounded">
-                            <label class="block text-[10px] text-slate-400 font-bold mb-1">ACTIVACIÓN (Interés Real)</label>
-                            <input type="text" id="metric-act" placeholder="Ej. 20 registros para usar demo técnica" class="w-full bg-slate-950 border border-slate-800 rounded p-1.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+                        <div class="flex gap-1.5">
+                            <button onclick="addTeam()" class="text-[10px] bg-slate-800 text-slate-200 border border-slate-700 px-2 py-1 rounded hover:bg-slate-700 transition">
+                                <i class="fa-solid fa-folder-plus text-sky-400"></i> Nuevo Grupo
+                            </button>
+                            <button onclick="addStudent()" class="text-[10px] bg-indigo-600/30 text-indigo-300 border border-indigo-500/20 px-2.5 py-1 rounded hover:bg-indigo-600/50 transition">
+                                <i class="fa-solid fa-user-plus text-indigo-400"></i> Agregar Alumno
+                            </button>
                         </div>
-                        <div class="p-3 bg-slate-900 border border-slate-800 rounded">
-                            <label class="block text-[10px] text-slate-400 font-bold mb-1">MONETIZACIÓN / RETENCIÓN</label>
-                            <input type="text" id="metric-mon" placeholder="Ej. Intención de pre-compra firmada" class="w-full bg-slate-950 border border-slate-800 rounded p-1.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+                    </div>
+
+                    <!-- Teams List & Allocations -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Left Sub-panel: Members Registry -->
+                        <div class="space-y-2 border-r border-slate-800/60 pr-0 md:pr-4">
+                            <h4 class="text-xs font-semibold text-slate-400 flex items-center justify-between">
+                                <span>Lista de Alumnos Matriculados</span>
+                                <span id="student-count-badge" class="text-[10px] bg-slate-900 px-2 py-0.5 rounded border border-slate-800">5 / 10</span>
+                            </h4>
+                            <div id="students-registry-container" class="space-y-2 max-h-60 overflow-y-auto pr-1">
+                                <!-- Dynamic dynamic student rows -->
+                            </div>
+                        </div>
+
+                        <!-- Right Sub-panel: Groups Visualization -->
+                        <div class="space-y-3">
+                            <h4 class="text-xs font-semibold text-slate-400">Distribución de Grupos Activos</h4>
+                            <div id="teams-group-container" class="space-y-3 max-h-64 overflow-y-auto pr-1">
+                                <!-- Dynamic team folders -->
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex justify-between pt-4 border-t border-slate-800">
-                    <button onclick="goToStep(3)" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                        Atrás
+                <div class="flex justify-between pt-3 border-t border-slate-800">
+                    <button onclick="goToStep(4)" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-xs sm:text-sm font-semibold px-4.5 py-2 rounded-lg transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-arrow-left"></i> Atrás
                     </button>
-                    <button onclick="generateIEEEPaper(); goToStep(5);" class="bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
-                        Generar Paper IEEE LaTeX
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    <button onclick="goToStep(6)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold px-4.5 py-2 rounded-lg transition-all flex items-center gap-1.5">
+                        Siguiente: Copiloto IA <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Step 5 Workspace (IEEE LaTeX Generator) -->
-            <div id="step-5-panel" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-6">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <!-- STEP 6: Copiloto IA (old Step 5) -->
+            <div id="step-6-panel" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-5 sm:p-6 space-y-5 shadow-xl">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                     <div>
-                        <h2 class="text-xl font-bold text-white">5. Tu Estructura de Paper de Validación en Formato IEEE</h2>
-                        <p class="text-sm text-slate-400 mt-1">Hemos procesado tu proyecto. Aquí tienes el código LaTeX completo listo para compilar o copiar en tu reporte académico.</p>
+                        <h2 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-robot text-indigo-500"></i> 6. Copiloto IA: Legibilidad & TRL
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-0.5">Evalúa si tu propuesta técnica e hipótesis son coherentes con el TRL seleccionado.</p>
                     </div>
-                    <div class="flex gap-2">
-                        <button onclick="copyIEEEToClipboard()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-all flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m-5 10h5m-4 4h4"></path></svg>
-                            Copiar Código
+                    <span class="text-xs font-mono text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded">Paso 6 de 7</span>
+                </div>
+
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                    <h3 class="text-xs font-bold text-indigo-300 uppercase tracking-wide">Prueba de Legitimidad Técnica y Académica</h3>
+                    <p class="text-[11px] text-slate-400">
+                        El Agente de IA analizará tu <strong>Título, Resumen, MVP y Nivel TRL</strong> para validar de manera constructiva que los datos estén alineados con las normas y pautas metodológicas legítimas de la feria de proyectos.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-2 pt-1">
+                        <button onclick="runAiReview()" id="run-ai-btn" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold px-5 py-2.5 rounded-lg shadow-lg shadow-indigo-500/10 flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-solid fa-circle-play text-xs"></i> Iniciar Análisis de Legitimidad con IA
                         </button>
-                        <button onclick="downloadLatexFile()" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-xs font-semibold px-4 py-2.5 rounded-lg transition-all flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                            Descargar .tex
+                        <button onclick="clearAiChat()" class="w-full sm:w-auto border border-slate-800 text-slate-400 hover:text-slate-300 text-xs px-4 py-2.5 rounded-lg transition-all flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-trash-can"></i> Limpiar Consola
                         </button>
                     </div>
                 </div>
 
-                <div class="relative bg-slate-950 rounded-lg p-4 border border-slate-800">
-                    <pre id="latex-output" class="code-font text-xs text-slate-300 overflow-x-auto whitespace-pre-wrap leading-relaxed max-h-96">
+                <!-- Chat/Reviewer Terminal Panel -->
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950 shadow-inner flex flex-col">
+                    <div class="bg-slate-900 px-4 py-2 flex items-center justify-between border-b border-slate-800">
+                        <div class="flex items-center space-x-1.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                            <span class="text-[10px] text-slate-400 font-mono ml-2">copilot_reviewer_agent.sh</span>
+                        </div>
+                        <span class="text-[10px] text-slate-500 font-mono">Gemini 3.1 Flash Ready</span>
+                    </div>
+
+                    <!-- Output Area -->
+                    <div class="p-4 min-h-60 max-h-96 overflow-y-auto leading-relaxed text-xs sm:text-sm font-mono space-y-3" id="ai-response-area">
+                        <div class="text-slate-500 italic">Consola de auditoría inactiva. Presiona el botón de arriba para iniciar la auditoría de rigor...</div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between pt-3 border-t border-slate-800">
+                    <button onclick="goToStep(5)" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-xs sm:text-sm font-semibold px-4.5 py-2 rounded-lg transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-arrow-left"></i> Atrás
+                    </button>
+                    <button onclick="generateIEEEPaper(); goToStep(7);" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-semibold px-4.5 py-2 rounded-lg transition-all flex items-center gap-1.5">
+                        Siguiente: Generar LaTeX <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 7: LaTeX Paper IEEE (old Step 6) -->
+            <div id="step-7-panel" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-5 sm:p-6 space-y-5 shadow-xl">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+                    <div>
+                        <h2 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-code text-indigo-500"></i> 7. Estructura del Paper IEEE de Validación
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-0.5">Código LaTeX listo para compilar en Overleaf con los niveles TRL y equipo validados.</p>
+                    </div>
+                    <div class="flex gap-1.5">
+                        <button onclick="copyIEEEToClipboard()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1">
+                            <i class="fa-regular fa-copy"></i> Copiar Código
+                        </button>
+                        <button onclick="downloadLatexFile()" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1">
+                            <i class="fa-solid fa-download"></i> Descargar .tex
+                        </button>
+                    </div>
+                </div>
+
+                <div class="relative bg-slate-950 rounded-lg p-3 sm:p-4 border border-slate-800 shadow-inner">
+                    <pre id="latex-output" class="code-font text-[11px] text-slate-300 overflow-x-auto whitespace-pre-wrap leading-relaxed max-h-96">
                         <!-- LaTeX Generated dynamically -->
                     </pre>
                 </div>
 
-                <div class="bg-indigo-950/20 border border-indigo-900/40 p-4 rounded-lg space-y-2">
-                    <h4 class="text-xs font-bold text-indigo-300">💡 Siguientes Pasos en tu Feria de Proyectos:</h4>
+                <div class="bg-indigo-950/20 border border-indigo-900/40 p-4 rounded-xl space-y-2">
+                    <h4 class="text-xs font-bold text-indigo-300 flex items-center gap-1.5">
+                        <i class="fa-solid fa-lightbulb"></i> Pasos para su compilación final:
+                    </h4>
                     <p class="text-xs text-slate-400">
-                        Este código sigue estrictamente la plantilla original de IEEE Transactions. Copia este contenido y utilízalo en plataformas como **Overleaf** o tu compilador local de LaTeX para generar un PDF impecable que demuestre la viabilidad científica de tu proyecto técnico.
+                        Copia todo el código LaTeX expuesto anteriormente y pégalo directamente en un nuevo proyecto vacío de **Overleaf.com** (utiliza el archivo `main.tex`). La plantilla ya incorpora de forma automática e integrada la estructura oficial de <span class="font-mono text-emerald-400">IEEE Transactions</span>, adaptada con las hipótesis de negocio, nivel TRL legítimo y la asignación final del equipo de trabajo.
                     </p>
                 </div>
 
-                <div class="flex justify-start pt-4 border-t border-slate-800">
-                    <button onclick="goToStep(4)" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                        Atrás
+                <div class="flex justify-start pt-3 border-t border-slate-800">
+                    <button onclick="goToStep(6)" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-xs sm:text-sm font-semibold px-4.5 py-2 rounded-lg transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-arrow-left"></i> Atrás
                     </button>
                 </div>
             </div>
@@ -372,42 +566,67 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-slate-900/40 py-6 mt-12 text-center text-xs text-slate-500">
+    <footer class="border-t border-slate-800 bg-slate-900/40 py-5 text-center text-xs text-slate-500">
         <div class="max-w-7xl mx-auto px-4">
-            <p>© 2026 Lean Tech-Startup Accelerator. Integrando metodologías del MIT y Harvard para Ingenieros.</p>
+            <p>© 2026 Lean Tech-Startup Accelerator (MIT, Harvard & IEEE Standards). Rigor metodológico e IA integrada.</p>
         </div>
     </footer>
 
     <!-- JS Logic -->
     <script>
-        // Default Local State
+        // State management
         let hypotheses = [
-            { id: 'H1', type: 'Problema', text: 'Los agricultores gastan más del 30% de su tiempo midiendo de forma analógica variables de suelo ineficientemente.', metric: '8 de cada 10 entrevistados confirman pérdida de tiempo', gravity: 'Alta' },
-            { id: 'H2', type: 'Solución', text: 'Nuestra red IoT móvil autocalibrante reduce un 50% el costo de instrumentación agrícola tradicional.', metric: 'Menor costo de sensor verificado en laboratorio (<$15USD)', gravity: 'Media' }
+            { id: 'H1', text: 'Los pequeños productores gastan un 25% de su presupuesto mensual hídrico por fugas e ineficiencia de riego analógico.', metric: 'Tasa superior al 70% de agricultores entrevistados', gravity: 'Alta' },
+            { id: 'H2', text: 'El algoritmo de auto-calibración puede operar en un microcontrolador ESP32 con menos de 100mW consumidos.', metric: 'Consumo real medido por osciloscopio en el laboratorio < 80mW', gravity: 'Media' }
         ];
 
-        // UI Step Navigation
+        // 10 students limit registry with their teams
+        let students = [
+            { id: 1, name: 'Lucía Fernández', email: 'lfernandez@universidad.edu', role: 'Investigadora Principal (PI)', teamId: 'A' },
+            { id: 2, name: 'Marcos Mendoza', email: 'mmendoza@universidad.edu', role: 'Lead Developer (Hardware)', teamId: 'A' },
+            { id: 3, name: 'Sofía Valenzuela', email: 'svalenzuela@universidad.edu', role: 'Scrum Master & QA', teamId: 'B' },
+            { id: 4, name: 'Daniel Rivas', email: 'drivas@universidad.edu', role: 'Especialista en Mercado (MIT Persona)', teamId: 'B' },
+            { id: 5, name: 'Camila Torres', email: 'ctorres@universidad.edu', role: 'Desarrolladora Cloud (Software)', teamId: 'A' }
+        ];
+
+        let teams = [
+            { id: 'A', name: 'Grupo Alfa (Smart Farming)' },
+            { id: 'B', name: 'Grupo Beta (Hídrico Invernadero)' },
+            { id: 'X', name: 'Sin asignar / Intercambio' }
+        ];
+
+        const TRL_DESCRIPTIONS = {
+            "1": "TRL 1: Solo principios fundamentales observados. En esta fase la viabilidad de la investigación es meramente teórica.",
+            "2": "TRL 2: Concepto formulado y validado en papel. Se planifican los modelos analíticos preliminares de hardware/software.",
+            "3": "TRL 3: Prueba de concepto activa. Se construyen experimentos de laboratorio aislados que demuestran la física del proyecto.",
+            "4": "TRL 4: Componentes individuales integrados y probados en un laboratorio para verificar que cooperan de forma coherente.",
+            "5": "TRL 5: El prototipo de laboratorio se traslada a simular condiciones reales del entorno o se prueba con simuladores externos robustos.",
+            "6": "TRL 6: Prototipo operativo probado con éxito en condiciones de campo reales (e.g. invernadero físico o laboratorio de usuarios).",
+            "7": "TRL 7: Demostración formal del sistema completo a escala operativa, listo para la validación comercial definitiva.",
+            "8": "TRL 8: Sistema real completado y calificado de manera formal mediante auditorías técnicas, certificando manufactura.",
+            "9": "TRL 9: Sistema productivo en pleno funcionamiento comercial masivo, escalable y con rentabilidad validada en campo."
+        };
+
+        // Navigation controller
         function goToStep(step) {
-            // Hide all panels
-            for (let i = 1; i <= 5; i++) {
-                document.getElementById(`step-${i}-panel`).classList.add('hidden');
+            for (let i = 1; i <= 7; i++) {
+                const panel = document.getElementById(`step-${i}-panel`);
+                if (panel) panel.classList.add('hidden');
                 
-                // Reset Nav Style
                 const btn = document.getElementById(`nav-btn-${i}`);
                 if (btn) {
-                    btn.className = "w-full text-left flex items-start p-3 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/50 hover:text-slate-200";
+                    btn.className = "w-full text-left flex items-start p-2.5 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/40 hover:text-slate-200";
                     const span = btn.querySelector('span');
                     if (span) span.className = "bg-slate-800 text-slate-400 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5";
                 }
             }
 
-            // Show current panel
-            document.getElementById(`step-${step}-panel`).classList.remove('hidden');
+            const currentPanel = document.getElementById(`step-${step}-panel`);
+            if (currentPanel) currentPanel.classList.remove('hidden');
 
-            // Set active style
             const activeBtn = document.getElementById(`nav-btn-${step}`);
             if (activeBtn) {
-                activeBtn.className = "w-full text-left flex items-start p-3 rounded-lg transition-all border border-transparent bg-indigo-950/40 border-indigo-500/30 text-indigo-300";
+                activeBtn.className = "w-full text-left flex items-start p-2.5 rounded-lg transition-all border border-indigo-500/30 bg-indigo-950/40 text-indigo-300";
                 const activeSpan = activeBtn.querySelector('span');
                 if (activeSpan) activeSpan.className = "bg-indigo-900 text-indigo-200 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5";
             }
@@ -415,57 +634,325 @@
             updateTheoryInsight(step);
         }
 
-        // Change Dynamic Theory Notes based on current active step
-        function updateTheoryInsight(step) {
-            const content = document.getElementById('theory-content');
-            let textHtml = "";
+        // TRL UI Badge Updater
+        function updateTrlUi() {
+            const trlSelect = document.getElementById('trl-select');
+            const val = trlSelect.value;
+            const badge = document.getElementById('trl-badge');
+            const feedback = document.getElementById('trl-feedback-box');
 
-            switch(step) {
-                case 1:
-                    textHtml = `
-                        <p class="font-bold text-indigo-400 mb-1">Cimientos Científicos</p>
-                        <p><strong>MIT (Bill Aulet):</strong> Postula que el emprendedor disciplinado se enfoca obsesivamente en la Segmentación. La invención técnica sin mercado vale $0.</p>
-                        <p class="mt-2"><strong>Harvard Business School:</strong> Entiende que el 75% de los emprendimientos de base tecnológica fracasan por construir cosas que nadie desea. El método de hipótesis-driven valida la tracción del mercado de manera incremental.</p>
-                    `;
-                    break;
-                case 2:
-                    textHtml = `
-                        <p class="font-bold text-indigo-400 mb-1">Beachhead Market & Core</p>
-                        <p><strong>Beachhead Market:</strong> Debe ser un mercado donde el cliente tenga capital disponible, un proceso de decisión de compra homogéneo, y donde el boca a boca sea el canal de aceleración definitivo.</p>
-                        <p class="mt-2"><strong>El Core (MIT Paso 10):</strong> Es tu foso defensivo tecnológico. Es la patente, el secreto industrial o el diseño de arquitectura imposible de copiar ágilmente por un seguidor.</p>
-                    `;
-                    break;
-                case 3:
-                    textHtml = `
-                        <p class="font-bold text-indigo-400 mb-1">Estrategia de Hipótesis de HBS</p>
-                        <p><strong>Definición de Falsabilidad:</strong> Una hipótesis es falsable si existe un experimento medible capaz de demostrar su falsedad de manera unívoca.</p>
-                        <p class="mt-2">En tu Paper IEEE, el apartado de validación científica de mercado mostrará los resultados de rechazar o aceptar estas hipótesis de manera empírica.</p>
-                    `;
-                    break;
-                case 4:
-                    textHtml = `
-                        <p class="font-bold text-indigo-400 mb-1">Métricas de Ingeniería (KPIs)</p>
-                        <p>Evita métricas vanidosas (likes, descargas sin uso). Mide el costo real de construir la tecnología y compáralo con el valor que aporta al agricultor, médico o usuario final.</p>
-                        <p class="mt-2"><strong>Unidades de Validación:</strong> Utiliza tasas de retención técnica e interactividad real del MVP.</p>
-                    `;
-                    break;
-                case 5:
-                    textHtml = `
-                        <p class="font-bold text-indigo-400 mb-1">Estructuración IEEE LaTeX</p>
-                        <p>Las secciones clásicas de IEEE se asocian con tu validación Lean:</p>
-                        <ul class="list-disc list-inside space-y-1 mt-1">
-                            <li><strong>I. Intro:</strong> El problema del cliente y la propuesta de valor.</li>
-                            <li><strong>II. Mercado de Playa:</strong> El nicho objetivo.</li>
-                            <li><strong>III. Hipótesis:</strong> Las hipótesis de ingeniería.</li>
-                            <li><strong>IV. MVP & Metodología:</strong> Tu diseño de experimento.</li>
-                        </ul>
-                    `;
-                    break;
-            }
-            content.innerHTML = textHtml;
+            badge.textContent = `TRL ${val}`;
+            feedback.innerHTML = `<p class="font-bold flex items-center gap-1"><i class="fa-solid fa-circle-check text-emerald-400"></i> Estado Legítimo:</p>
+                                  <p class="mt-1">${TRL_DESCRIPTIONS[val]}</p>`;
         }
 
-        // Add dynamic Hypothesis to table
+        // Brainstorming using Gemini API
+        async function generateBrainstormIdeas() {
+            const btn = document.getElementById('btn-brainstorm');
+            const keywords = document.getElementById('ideation-keywords').value;
+            const resultsBox = document.getElementById('brainstorm-results-box');
+            const cardsContainer = document.getElementById('brainstorm-cards');
+
+            if (!keywords.trim()) {
+                alert('Ingresa algunas palabras clave para iniciar.');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Generando Ideas...`;
+            resultsBox.classList.remove('hidden');
+            cardsContainer.innerHTML = `<div class="col-span-full text-center text-indigo-400 text-xs py-6 animate-pulse"><i class="fa-solid fa-brain"></i> Elaborando propuestas innovadoras de base científica con IA...</div>`;
+
+            const systemPrompt = `Eres un asesor de innovación en ingeniería del MIT y Harvard. Diseña 3 ideas de proyectos de base técnica altamente innovadores, con rigor y sentido comercial a partir de las palabras clave del usuario.
+Retorna UNICAMENTE un arreglo JSON con el siguiente esquema estricto de ejemplo (sin markdown de código en el texto devuelto, solo el JSON puro):
+[
+  {
+    "titulo": "Título formal del proyecto",
+    "abstract": "Breve resumen de cómo funciona técnicamente y soluciona un problema.",
+    "core": "La ventaja técnica injusta o foso defensivo.",
+    "nicho": "El beachhead market sugerido."
+  }
+]`;
+
+            const userQuery = `Mis palabras clave de interés: "${keywords}". Diseña 3 proyectos técnicos de feria originales.`;
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                generationConfig: { responseMimeType: "application/json" }
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                const jsonText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                const parsedIdeas = JSON.parse(jsonText);
+
+                cardsContainer.innerHTML = '';
+                parsedIdeas.forEach((idea, idx) => {
+                    const card = document.createElement('div');
+                    card.className = "bg-slate-950 p-3.5 border border-slate-800 rounded-xl hover:border-indigo-500/50 transition-all flex flex-col justify-between space-y-3 shadow-md";
+                    card.innerHTML = `
+                        <div>
+                            <div class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded border border-indigo-500/20 font-bold uppercase tracking-wider w-fit mb-2">Propuesta ${idx + 1}</div>
+                            <h4 class="text-xs font-bold text-white mb-1.5 leading-snug">${idea.titulo}</h4>
+                            <p class="text-[11px] text-slate-400 line-clamp-4 leading-normal mb-2">${idea.abstract}</p>
+                            <p class="text-[10px] text-slate-500"><strong class="text-indigo-400">Core:</strong> ${idea.core}</p>
+                        </div>
+                        <button onclick="applySelectedIdea('${escapeJsString(idea.titulo)}', '${escapeJsString(idea.abstract)}', '${escapeJsString(idea.core)}', '${escapeJsString(idea.nicho)}')" class="w-full bg-indigo-600/20 hover:bg-indigo-600 border border-indigo-500/30 text-indigo-300 hover:text-white text-[10px] font-bold py-1.5 rounded transition-all">
+                            Usar esta propuesta
+                        </button>
+                    `;
+                    cardsContainer.appendChild(card);
+                });
+            } catch (err) {
+                console.error(err);
+                cardsContainer.innerHTML = `<div class="col-span-full text-center text-rose-400 text-xs py-4"><i class="fa-solid fa-circle-exclamation"></i> Error al generar ideas. Por favor, intente nuevamente o proceda de forma manual.</div>`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fa-solid fa-wand-magic-sparkles"></i> Generar 3 Ideas Técnicas`;
+            }
+        }
+
+        // Apply selected brainstorm idea to forms
+        function applySelectedIdea(title, abstract, core, nicho) {
+            document.getElementById('proj-title').value = title;
+            document.getElementById('proj-abstract').value = abstract;
+            document.getElementById('proj-core').value = core;
+            document.getElementById('proj-beachhead').value = nicho;
+            document.getElementById('idea-to-check').value = title;
+            alert('¡Propuesta cargada con éxito! Se han completado de manera inicial los apartados de Cimientos Académicos y Mercado Playa.');
+            goToStep(2);
+        }
+
+        function escapeJsString(str) {
+            return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
+        }
+
+        // Check Originality using Google Search Grounding Tool
+        async function checkOriginalityWithGrounding() {
+            const btn = document.getElementById('btn-check-originality');
+            const ideaText = document.getElementById('idea-to-check').value;
+            const reportArea = document.getElementById('originality-report-area');
+
+            if (!ideaText.trim()) {
+                alert('Ingresa una idea o título para verificar originalidad.');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Auditando Originalidad en la Web...`;
+            reportArea.classList.remove('hidden');
+            reportArea.innerHTML = `<div class="text-indigo-400 flex items-center gap-1.5 animate-pulse"><i class="fa-solid fa-wifi"></i> Conectando con Google Search Grounding... Evaluando publicaciones similares...</div>`;
+
+            const systemPrompt = `Eres un auditor académico de propiedad intelectual de la IEEE. Tu trabajo es realizar una búsqueda de patentes, papers académicos y proyectos de ferias técnicas previos en internet a través de Google Search.
+Evalúa con máximo rigor científico si la idea del estudiante ya está sumamente saturada/repetida, o si ofrece un ángulo de originalidad sustantiva.
+Proporciona un reporte con:
+1. Una puntuación de Originalidad (de 1 a 10).
+2. Proyectos o papers similares existentes encontrados en la web.
+3. Sugerencia de mejora técnica para evitar que sea repetitivo.
+Termina citando de manera clara los enlaces o títulos de las fuentes encontradas.`;
+
+            const userQuery = `Bajo rigor de la IEEE, busca en la web y evalúa la originalidad de esta idea de proyecto: "${ideaText}". ¿Ya se encuentra repetido?`;
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                tools: [{ "google_search": {} }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            // Exponential backoff wrapper
+            async function fetchWithBackoff(url, options, retries = 3, delay = 1000) {
+                try {
+                    const response = await fetch(url, options);
+                    if (!response.ok) {
+                        if (response.status === 429 && retries > 0) {
+                            await new Promise(res => setTimeout(res, delay));
+                            return fetchWithBackoff(url, options, retries - 1, delay * 2);
+                        }
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                    return response;
+                } catch (error) {
+                    if (retries > 0) {
+                        await new Promise(res => setTimeout(res, delay));
+                        return fetchWithBackoff(url, options, retries - 1, delay * 2);
+                    }
+                    throw error;
+                }
+            }
+
+            try {
+                const response = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                // Extract grounding sources
+                let sourcesHtml = '';
+                const groundingMetadata = result.candidates?.[0]?.groundingMetadata;
+                if (groundingMetadata && groundingMetadata.groundingAttributions) {
+                    const sources = groundingMetadata.groundingAttributions
+                        .map(attribution => ({
+                            uri: attribution.web?.uri,
+                            title: attribution.web?.title,
+                        }))
+                        .filter(source => source.uri && source.title);
+
+                    if (sources.length > 0) {
+                        sourcesHtml = `<div class="mt-3 pt-2.5 border-t border-slate-800 text-[11px] text-indigo-300">
+                                            <p class="font-bold mb-1"><i class="fa-solid fa-link"></i> Fuentes y Enlaces de Contraste Encontrados:</p>
+                                            <ul class="space-y-1 list-disc list-inside">`;
+                        sources.forEach(src => {
+                            sourcesHtml += `<li><a href="${src.uri}" target="_blank" class="underline hover:text-indigo-400">${src.title}</a></li>`;
+                        });
+                        sourcesHtml += `</ul></div>`;
+                    }
+                }
+
+                if (text) {
+                    reportArea.innerHTML = `
+                        <div class="text-emerald-400 font-bold border-b border-slate-800 pb-1 flex items-center gap-1">
+                            <i class="fa-solid fa-shield-halved"></i> REPORTE DE ORIGINALIDAD (GROUNDED SEARCH):
+                        </div>
+                        <div class="text-[11px] text-slate-300 whitespace-pre-wrap leading-relaxed mt-2">${escapeHtml(text)}</div>
+                        ${sourcesHtml}
+                    `;
+                } else {
+                    reportArea.innerHTML = `<div class="text-amber-500 italic">No se pudo procesar la auditoría web en este momento. Intente más tarde.</div>`;
+                }
+
+            } catch (err) {
+                console.error(err);
+                reportArea.innerHTML = `<div class="text-rose-400 text-xs font-bold py-2"><i class="fa-solid fa-circle-exclamation"></i> Fallo al conectar con el servidor de búsqueda de Google Grounding. Proceda ingresando sus datos manualmente.</div>`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i> Auditar Originalidad Web & Citas`;
+            }
+        }
+
+        // Manage Student List
+        function renderStudentsAndTeams() {
+            const registry = document.getElementById('students-registry-container');
+            const groupsContainer = document.getElementById('teams-group-container');
+            const badge = document.getElementById('student-count-badge');
+            
+            badge.textContent = `${students.length} / 10 Alumnos`;
+            
+            registry.innerHTML = '';
+            students.forEach((stu, index) => {
+                const stuDiv = document.createElement('div');
+                stuDiv.className = "p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-[11px] flex flex-col gap-1 hover:border-slate-700 transition";
+                
+                let selectOptions = '';
+                teams.forEach(t => {
+                    selectOptions += `<option value="${t.id}" ${stu.teamId === t.id ? 'selected' : ''}>${t.name.split(' ')[0] || t.name}</option>`;
+                });
+
+                stuDiv.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <input type="text" onchange="updateStudentField(${index}, 'name', this.value)" value="${stu.name}" class="bg-transparent font-bold text-slate-200 focus:outline-none border-b border-transparent focus:border-indigo-500 w-2/3">
+                        <button onclick="removeStudent(${index})" class="text-rose-400 hover:text-rose-300 font-bold px-1.5 py-0.5 rounded text-[10px]"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                    <div class="grid grid-cols-2 gap-1.5 mt-1">
+                        <div>
+                            <span class="text-[9px] text-slate-500 block uppercase font-semibold">Rol del Estudiante</span>
+                            <input type="text" onchange="updateStudentField(${index}, 'role', this.value)" value="${stu.role}" class="bg-slate-950 border border-slate-800 text-[10px] rounded p-1 w-full text-slate-300">
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-slate-500 block uppercase font-semibold">Grupo Asignado</span>
+                            <select onchange="updateStudentField(${index}, 'teamId', this.value)" class="bg-slate-950 border border-slate-800 text-[10px] rounded p-1 w-full text-slate-300">
+                                ${selectOptions}
+                            </select>
+                        </div>
+                    </div>
+                `;
+                registry.appendChild(stuDiv);
+            });
+
+            groupsContainer.innerHTML = '';
+            teams.forEach(team => {
+                const teamDiv = document.createElement('div');
+                teamDiv.className = "bg-slate-900 border border-slate-800 rounded-lg p-3 space-y-2";
+                
+                const members = students.filter(s => s.teamId === team.id);
+                let listHtml = '';
+                if (members.length === 0) {
+                    listHtml = `<p class="text-[10px] text-slate-500 italic pl-3">No hay alumnos asignados a este equipo.</p>`;
+                } else {
+                    listHtml = `<ul class="space-y-1 pl-3">`;
+                    members.forEach(m => {
+                        listHtml += `<li class="text-[10px] text-slate-300 flex items-center justify-between">
+                                        <span class="flex items-center gap-1"><i class="fa-solid fa-circle text-[6px] text-indigo-400"></i> ${m.name}</span>
+                                        <span class="text-[9px] text-slate-500 bg-slate-950 px-1.5 py-0.2 rounded border border-slate-800/80">${m.role}</span>
+                                    </li>`;
+                    });
+                    listHtml += `</ul>`;
+                }
+
+                teamDiv.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-slate-800/80 pb-1.5">
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-regular fa-folder-open text-sky-400 text-xs"></i>
+                            <span class="text-[11px] font-bold text-slate-300">${team.name}</span>
+                        </div>
+                        <span class="text-[9px] font-mono font-bold bg-sky-500/10 text-sky-400 border border-sky-500/20 px-1.5 rounded-full">${members.length} Alumnos</span>
+                    </div>
+                    ${listHtml}
+                `;
+                groupsContainer.appendChild(teamDiv);
+            });
+        }
+
+        function addStudent() {
+            if (students.length >= 10) {
+                alert('Rigor de Feria Académica: Límite de 10 alumnos inscritos alcanzado para la gestión grupal.');
+                return;
+            }
+            const nextId = students.length + 1;
+            students.push({
+                id: nextId,
+                name: `Alumno Nuevo ${nextId}`,
+                email: `alumno${nextId}@universidad.edu`,
+                role: 'Investigador Colaborador',
+                teamId: 'A'
+            });
+            renderStudentsAndTeams();
+        }
+
+        function removeStudent(index) {
+            students.splice(index, 1);
+            renderStudentsAndTeams();
+        }
+
+        function updateStudentField(index, field, value) {
+            students[index][field] = value;
+            renderStudentsAndTeams();
+        }
+
+        function addTeam() {
+            const nextLetter = String.fromCharCode(65 + teams.length - 1); // B, C, D...
+            teams.unshift({
+                id: nextLetter,
+                name: `Grupo ${nextLetter} (Tecnología Innovadora)`
+            });
+            renderStudentsAndTeams();
+        }
+
+        // Matriz de hipótesis
         function renderHypotheses() {
             const body = document.getElementById('hypotheses-table-body');
             body.innerHTML = '';
@@ -474,22 +961,22 @@
                 const tr = document.createElement('tr');
                 tr.className = "border-b border-slate-900 hover:bg-slate-900/30 transition-colors";
                 tr.innerHTML = `
-                    <td class="p-3 text-slate-400 font-bold">${hyp.id}</td>
+                    <td class="p-3 text-slate-400 font-bold font-mono">${hyp.id}</td>
                     <td class="p-3">
-                        <textarea onchange="updateHypothesis(${index}, 'text', this.value)" class="w-full bg-transparent border-b border-transparent focus:border-indigo-500 focus:outline-none p-1 text-slate-200 resize-none text-xs" rows="2">${hyp.text}</textarea>
+                        <textarea onchange="updateHypothesis(${index}, 'text', this.value)" class="w-full bg-transparent border-b border-transparent focus:border-indigo-500 focus:outline-none p-1 text-slate-200 resize-none text-[11px]" rows="2">${hyp.text}</textarea>
                     </td>
                     <td class="p-3">
-                        <input type="text" onchange="updateHypothesis(${index}, 'metric', this.value)" value="${hyp.metric}" class="w-full bg-transparent border-b border-transparent focus:border-indigo-500 focus:outline-none p-1 text-slate-300 text-xs">
+                        <input type="text" onchange="updateHypothesis(${index}, 'metric', this.value)" value="${hyp.metric}" class="w-full bg-transparent border-b border-transparent focus:border-indigo-500 focus:outline-none p-1 text-slate-300 text-[11px]">
                     </td>
                     <td class="p-3">
-                        <select onchange="updateHypothesis(${index}, 'gravity', this.value)" class="bg-slate-900 text-slate-300 rounded p-1 text-[11px] focus:outline-none border border-slate-800">
+                        <select onchange="updateHypothesis(${index}, 'gravity', this.value)" class="bg-slate-900 text-slate-300 rounded p-1 text-[10px] focus:outline-none border border-slate-800">
                             <option value="Alta" ${hyp.gravity === 'Alta' ? 'selected' : ''}>Alta</option>
                             <option value="Media" ${hyp.gravity === 'Media' ? 'selected' : ''}>Media</option>
                             <option value="Baja" ${hyp.gravity === 'Baja' ? 'selected' : ''}>Baja</option>
                         </select>
                     </td>
                     <td class="p-3 text-right">
-                        <button onclick="removeHypothesis(${index})" class="text-rose-400 hover:text-rose-300 font-semibold text-xs px-2 py-1 bg-rose-500/10 rounded border border-rose-500/20">Eliminar</button>
+                        <button onclick="removeHypothesis(${index})" class="text-rose-400 hover:text-rose-300 font-semibold text-xs px-2 py-1 bg-rose-500/10 rounded border border-rose-500/20"><i class="fa-regular fa-trash-can"></i></button>
                     </td>
                 `;
                 body.appendChild(tr);
@@ -500,9 +987,8 @@
             const nextId = `H${hypotheses.length + 1}`;
             hypotheses.push({
                 id: nextId,
-                type: 'Nueva',
-                text: 'Creemos que el usuario [X] logrará [Y] medido mediante [Z].',
-                metric: 'Tasa superior al X%',
+                text: 'Creemos que [X] realizará la acción [Y] medida por [Z].',
+                metric: 'Conversión mayor al 20%',
                 gravity: 'Media'
             });
             renderHypotheses();
@@ -510,10 +996,7 @@
 
         function removeHypothesis(index) {
             hypotheses.splice(index, 1);
-            // Re-index
-            hypotheses.forEach((hyp, i) => {
-                hyp.id = `H${i + 1}`;
-            });
+            hypotheses.forEach((h, i) => h.id = `H${i + 1}`);
             renderHypotheses();
         }
 
@@ -521,27 +1004,147 @@
             hypotheses[index][field] = value;
         }
 
-        // Generate Latex Output with structured data
+        // AI Review Call Using Gemini API
+        async function runAiReview() {
+            const runBtn = document.getElementById('run-ai-btn');
+            const respArea = document.getElementById('ai-response-area');
+            
+            runBtn.disabled = true;
+            runBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Auditando...`;
+            respArea.innerHTML = `<div class="text-indigo-400 flex items-center gap-2"><i class="fa-solid fa-terminal animate-pulse"></i> Iniciando conexión segura con el Agente de Auditoría de Rigor (Gemini 3.1 Flash)...</div>`;
+
+            const projTitle = document.getElementById('proj-title').value;
+            const projAbstract = document.getElementById('proj-abstract').value;
+            const projBeachhead = document.getElementById('proj-beachhead').value;
+            const trlSelected = document.getElementById('trl-select').value;
+            const mvpTechDesc = document.getElementById('mvp-tech').value;
+            
+            let hypothesesStr = "";
+            hypotheses.forEach(h => {
+                hypothesesStr += `- ${h.id}: ${h.text} [Métrica: ${h.metric}] \n`;
+            });
+
+            let teamStr = "";
+            students.forEach(s => {
+                teamStr += `- ${s.name} (${s.role}) - Equipo ${s.teamId}\n`;
+            });
+
+            const systemPrompt = `Actúas como un Agente de Auditoría Académica y Comercial de Base Científica-Tecnológica (IEEE & MIT/Harvard Peer Reviewer). Evalúas con máximo rigor:
+1. Legibilidad de la propuesta y lenguaje formal en español.
+2. Coherencia legítima del nivel TRL declarado (TRL actual: TRL ${trlSelected}) respecto al MVP y tecnología descrita. Si declaran TRL alto pero el MVP es muy básico, indícalo educadamente.
+3. Consistencia de la segmentación de playa del MIT.
+Proporciona una crítica exhaustiva con viñetas estructuradas y una puntuación de legitimidad de 1 a 10.`;
+
+            const userQuery = `Por favor audita y analiza mi proyecto técnico con los siguientes datos:
+- TÍTULO: ${projTitle}
+- RESUMEN: ${projAbstract}
+- BEACHHEAD MARKET (MIT): ${projBeachhead}
+- TRL SELECCIONADO: TRL ${trlSelected}
+- ARQUITECTURA TÉCNICA DEL MVP: ${mvpTechDesc}
+- MATRIZ DE HIPÓTESIS:
+${hypothesesStr}
+- INTEGRANTES DEL EQUIPO Y GRUPOS:
+${teamStr}
+
+Genera tu revisión estructurada en formato claro.`;
+
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            async function fetchWithBackoff(url, options, retries = 3, delay = 1000) {
+                try {
+                    const response = await fetch(url, options);
+                    if (!response.ok) {
+                        if (response.status === 429 && retries > 0) {
+                            await new Promise(res => setTimeout(res, delay));
+                            return fetchWithBackoff(url, options, retries - 1, delay * 2);
+                        }
+                        throw new Error(`HTTP Error: ${response.status}`);
+                    }
+                    return response;
+                } catch (error) {
+                    if (retries > 0) {
+                        await new Promise(res => setTimeout(res, delay));
+                        return fetchWithBackoff(url, options, retries - 1, delay * 2);
+                    }
+                    throw error;
+                }
+            }
+
+            try {
+                const response = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                const generatedText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (generatedText) {
+                    respArea.innerHTML = `<div class="text-emerald-400 font-bold border-b border-slate-800 pb-1 flex items-center gap-1"><i class="fa-solid fa-square-poll-horizontal"></i> REPORTE DE AUDITORÍA IA GENERADO EXITOSAMENTE:</div>
+                                          <div class="text-xs text-slate-300 mt-2 space-y-1.5 whitespace-pre-wrap">${escapeHtml(generatedText)}</div>`;
+                } else {
+                    respArea.innerHTML = `<div class="text-amber-500 italic">No se pudo procesar la respuesta estructurada de IA. Revisa los datos de tus formularios e inténtalo de nuevo.</div>`;
+                }
+            } catch (err) {
+                console.error(err);
+                respArea.innerHTML = `<div class="text-rose-400">
+                                        <p class="font-bold"><i class="fa-solid fa-triangle-exclamation"></i> Error de Conexión del Agente IA:</p>
+                                        <p class="mt-1 text-[11px] font-mono text-slate-400">Ocurrió un error en el canal o de cuota (429/500). Por favor, inténtelo de nuevo.</p>
+                                      </div>`;
+            } finally {
+                runBtn.disabled = false;
+                runBtn.innerHTML = `<i class="fa-solid fa-circle-play text-xs"></i> Iniciar Análisis de Legitimidad con IA`;
+            }
+        }
+
+        function clearAiChat() {
+            document.getElementById('ai-response-area').innerHTML = `<div class="text-slate-500 italic">Historial de auditorías despejado. Presione iniciar análisis para auditar el proyecto.</div>`;
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // LaTeX Template Engine IEEE Formatting
         function generateIEEEPaper() {
             const title = document.getElementById('proj-title').value || "SISTEMA INTEGRADO DE BASE TECNOLÓGICA Y VALIDACIÓN CIENTÍFICA LEAN STARTUP";
             const abstract = document.getElementById('proj-abstract').value || "Este paper describe la validación experimental y de mercado de una propuesta tecnológica de ingeniería, evaluando la tracción real y validación de hipótesis de negocio bajo metodologías del MIT y Harvard.";
-            const beachhead = document.getElementById('proj-beachhead').value || "Mercado industrial altamente focalizado (Early Adopters de tecnología).";
+            const beachhead = document.getElementById('proj-beachhead').value || "Mercado industrial altamente focalizado.";
             const personaName = document.getElementById('persona-name').value || "Carlos, Ingeniero de Planta";
             const personaPains = document.getElementById('persona-pains').value || "Dificultad de monitorización rápida, ineficiencia técnica y sobrecostos.";
             const core = document.getElementById('proj-core').value || "Algoritmo o sistema integrado de baja latencia con arquitectura patentable.";
             const mvpTech = document.getElementById('mvp-tech').value || "Prototipo funcional a escala con integraciones API mínimas.";
             const mvpStrategy = document.getElementById('mvp-strategy').value;
             const mvpStrategyDesc = document.getElementById('mvp-experiment-desc').value || "Ejecución del experimento con un conjunto inicial de usuarios beta.";
+            const trlSelected = document.getElementById('trl-select').value;
             
-            // Metrics
-            const metricAcq = document.getElementById('metric-acq').value || "Sin definir";
-            const metricAct = document.getElementById('metric-act').value || "Sin definir";
-            const metricMon = document.getElementById('metric-mon').value || "Sin definir";
-
-            // LaTeX formatting of Hypotheses
             let latexHypotheses = "";
             hypotheses.forEach(hyp => {
-                latexHypotheses += `\\item \\textbf{Hipótesis (${hyp.id}) [Riesgo ${hyp.gravity}]:} ${hyp.text} \\\\ \\textit{Criterio de Validación:} ${hyp.metric}\n`;
+                latexHypotheses += `\\item \\textbf{Hipótesis (${hyp.id}) [Riesgo ${hyp.gravity}]:} ${hyp.text} \\\\ \\textit{Métrica de Validación:} ${hyp.metric}\n`;
+            });
+
+            let latexTeams = "";
+            teams.forEach(t => {
+                const members = students.filter(s => s.teamId === t.id);
+                if (members.length > 0) {
+                    latexTeams += `\\item \\textbf{${t.name}:}\n\\begin{itemize}\n`;
+                    members.forEach(m => {
+                        latexTeams += `    \\item ${m.name} - \\textit{Rol: ${m.role}}\n`;
+                    });
+                    latexTeams += `\\end{itemize}\n`;
+                }
             });
 
             const latexCode = `\\documentclass[journal,10pt,compsoc]{IEEEtran}
@@ -555,7 +1158,7 @@
 
 \\title{${title.toUpperCase()}}
 
-\\author{Equipo de Innovación Tecnológica \\\\ \\small Feria de Proyectos de Base Científica}
+\\author{Equipo Multidisciplinario de Innovación \\\\ \\small Universidad de Base Científica y Tecnológica}
 
 \\maketitle
 
@@ -564,89 +1167,140 @@ ${abstract}
 \\end{abstract}
 
 \\begin{IEEEkeywords}
-Lean Startup, Disciplined Entrepreneurship, MIT Framework, Harvard Hypothesis-Driven, Formato IEEE, Innovación Tecnológica.
+Lean Startup, Disciplined Entrepreneurship, MIT Framework, Harvard Hypothesis-Driven, Madurez TRL ${trlSelected}, Formato IEEE, Innovación Tecnológica, Trabajo Colaborativo.
 \\end{IEEEkeywords}
 
 \\section{Introducción}
-La ingeniería moderna exige que el diseño de sistemas de alta tecnología no solo cumpla con la viabilidad técnica de laboratorio, sino con la viabilidad real y comercial en entornos de producción. Utilizando la metodología de \\textbf{Lean Startup} popularizada por Eric Ries, combinada con la rigurosidad científica de la iniciativa \\textbf{Hypothesis-Driven Entrepreneurship de Harvard} y los pasos detallados del \\textbf{MIT (Disciplined Entrepreneurship)}, este documento detalla el proceso de diseño, experimentación y validación empírica de un prototipo técnico innovador.
+La ingeniería contemporánea y la academia exigen que los proyectos de feria y tesis combinen no solo un alto nivel técnico, sino una validación científica con rigor metodológico comercial. Este artículo documenta el proceso del diseño e implementación del sistema tecnológico, validando empíricamente sus hipótesis comerciales y de ingeniería bajo el modelo de \\textbf{Lean Startup}, el enfoque de segmentación del \\textbf{MIT} y la formulación científica de hipótesis de \\textbf{Harvard Business School}. Asimismo, se audita legítimamente el nivel de madurez técnica del sistema bajo la escala \\textbf{TRL (Technology Readiness Level)}.
+
+\\section{Madurez Tecnológica y Equipo de Investigación}
+\\subsection{Nivel de Madurez Tecnológica (TRL)}
+De manera rigurosa y legítima, el sistema propuesto ha sido calificado en la escala de madurez como:
+\\\\ \\textbf{Clasificación Actual del Prototipo: TRL ${trlSelected}}
+\\\\ \\textit{Justificación metodológica:} ${TRL_DESCRIPTIONS[trlSelected]}
+
+\\subsection{Organización del Equipo de Colaboración}
+El proyecto se diseñó con un enfoque multi-disciplinario de alumnos integrados con roles especializados en investigación técnica y desarrollo comercial. La composición de los grupos de trabajo se detalla a continuación:
+\\begin{itemize}
+${latexTeams || '\\item \\textit{No se especificaron equipos de alumnos dinámicos todavía.}'}
+\\end{itemize}
 
 \\section{Segmentación de Mercado y Beachhead (MIT Framework)}
 \\subsection{Segmentación del Mercado de Playa (Beachhead Market)}
-De acuerdo con Bill Aulet (MIT), se identificó un único segmento inicial donde nuestra tecnología posee el mayor potencial de adopción ágil:
+Conforme a la metodología Disciplined Entrepreneurship de Bill Aulet (MIT), se identificó un único nicho para la validación inicial de nuestra tecnología:
 \\begin{itemize}
-    \\item \\textbf{Definición del Mercado:} ${beachhead}
-    \\item \\textbf{Persona Clave de Validación:} ${personaName}. \\\\ \\textit{Puntos de dolor identificados:} ${personaPains}
+    \\item \\textbf{Nicho Objetivo de Playa:} ${beachhead}
+    \\item \\textbf{Usuario Final Clave (La Persona):} ${personaName}. \\\\ \\textit{Frustraciones críticas:} ${personaPains}
 \\end{itemize}
 
 \\subsection{Ventaja Injusta de Ingeniería (The Technical Core)}
-El pilar diferenciador o núcleo que protege nuestra propiedad intelectual y tecnológica se define como:
-\\\\ \\textbf{Core:} ${core}
+La competencia central técnica del equipo para asegurar exclusividad y protección intelectual se define como:
+\\\\ \\textbf{Technical Core:} ${core}
 
-\\section{Formulación de Hipótesis Científicas (Harvard Business School Framework)}
-Siguiendo los estándares del profesor Thomas Eisenmann de Harvard, formulamos un conjunto de hipótesis falsables ($H_0$). La validación técnica de mercado asume que el sistema es viable solo si estas hipótesis son aceptadas con significancia empírica:
-
+\\section{Hipótesis de Negocio Falsables (Harvard Framework)}
+Siguiendo los estándares del modelo \\textit{Hypothesis-Driven Entrepreneurship de Harvard}, se plantearon las siguientes hipótesis formuladas como experimentos falsables ($H_0$):
 \\begin{itemize}
 ${latexHypotheses || '\\item \\textit{No se especificaron hipótesis dinámicas todavía.}'}
 \\end{itemize}
 
-\\section{Diseño del Prototipo Mínimo Viable (MVP) y Experimento}
+\\section{Arquitectura del MVP y Estrategia Experimental}
 \\subsection{Arquitectura Técnica del MVP}
-La arquitectura de hardware y software del Producto Mínimo Viable desarrollado comprende la siguiente infraestructura técnica mínima viable para la feria de proyectos:
-\\\\ \\textit{Descripción:} ${mvpTech}
+La infraestructura mínima de hardware y software desarrollada para soportar la validación y captura de métricas del prototipo consta de:
+\\\\ \\textit{Descripción de Arquitectura:} ${mvpTech}
 
-\\subsection{Metodología de Validación y Estrategia Experimental}
-El experimento fue estructurado bajo la estrategia de: \\textbf{MVP tipo ${mvpStrategy.toUpperCase()}}.
-\\\\ \\textit{Detalles de la estrategia:} ${mvpStrategyDesc}
+\\subsection{Metodología de Validación y Estrategia de Experimento}
+La puesta en producción con early-adopters se estructuró bajo el enfoque de: \\textbf{MVP tipo ${mvpStrategy.toUpperCase()}}.
+\\\\ \\textit{Ejecución experimental:} ${mvpStrategyDesc}
 
-\\section{Resultados y Métricas de Validación de Ingeniería}
-Para evaluar la tracción empírica e interés del mercado de playa, se utilizó el embudo de métricas de validación con los siguientes objetivos cuantificables:
-
-\\begin{itemize}
-    \\item \\textbf{Adquisición / Atención:} ${metricAcq}
-    \\item \\textbf{Activación (Demostración de Interés Real):} ${metricAct}
-    \\item \\textbf{Monetización / Retención (Sostenibilidad):} ${metricMon}
-\\end{itemize}
-
-\\section{Conclusiones y Decisiones de Continuidad (Pivotar o Perseverar)}
-La aplicación del ciclo iterativo \\textit{Construir-Medir-Aprender} determinó un camino estructurado de validación científica, alineando los objetivos de ingeniería de hardware/software con un nicho de mercado sumamente específico antes de escalar de forma costosa la solución en la feria de proyectos.
+\\section{Conclusiones y Trabajo Futuro}
+La aplicación de marcos científicos coordinados de Harvard, MIT y la escala TRL ${trlSelected} permitió al equipo de alumnos estructurar un proyecto de base tecnológica robusto y legítimo, ideal para el rigor de la feria de proyectos, minimizando el desperdicio de desarrollo técnico antes de escalar de forma sustentable.
 
 \\end{document}
 `;
             document.getElementById('latex-output').textContent = latexCode;
         }
 
-        // Copy to clipboard fallback integration
         function copyIEEEToClipboard() {
             const codeText = document.getElementById('latex-output').textContent;
-            
-            // Fallback legacy method due to iframe restrictions
             const textarea = document.createElement('textarea');
             textarea.value = codeText;
             document.body.appendChild(textarea);
             textarea.select();
             try {
                 document.execCommand('copy');
-                alert('¡Código LaTeX copiado al portapapeles con éxito!');
+                alert('¡Código LaTeX copiado con éxito al portapapeles!');
             } catch (err) {
                 console.error('Error al copiar', err);
             }
             document.body.removeChild(textarea);
         }
 
-        // Download as local .tex file
         function downloadLatexFile() {
             const codeText = document.getElementById('latex-output').textContent;
             const blob = new Blob([codeText], { type: 'text/plain;charset=utf-8' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = 'paper_lean_ieee.tex';
+            link.download = 'paper_lean_ieee_trl_teams.tex';
             link.click();
             URL.revokeObjectURL(link.href);
         }
 
-        // Initialize App on DOM Ready
+        // Dynamic Theory Guide Changer
+        function updateTheoryInsight(step) {
+            const content = document.getElementById('theory-content');
+            let textHtml = "";
+
+            switch(step) {
+                case 1:
+                    textHtml = `
+                        <p><strong>Búsqueda Con Grounding IA:</strong> El proceso de ideación utiliza búsqueda en internet de tiempo real para asegurar que tu idea no sea un cliché académico.</p>
+                        <p class="mt-2"><strong>Rigor Desde el Origen:</strong> Si un proyecto ya tiene más de 100 réplicas comerciales o educativas idénticas, el detector te alertará para que alteres tu enfoque e integres una variable de diseño única.</p>
+                    `;
+                    break;
+                case 2:
+                    textHtml = `
+                        <p><strong>Cimientos de Ingeniería (MIT):</strong> Bill Aulet resalta que construir un gran producto no sirve de nada si nadie lo quiere. El diseño técnico debe nacer de la empatía con el mercado.</p>
+                        <p class="mt-2"><strong>Harvard Business School:</strong> Tom Eisenmann recalca evitar el "miedo a pivotar". Una hipótesis rechazada a tiempo es un éxito de aprendizaje, no un fracaso del proyecto.</p>
+                    `;
+                    break;
+                case 3:
+                    textHtml = `
+                        <p><strong>MIT Paso 2 (Beachhead Market):</strong> Enfocar todos tus recursos de ingeniería limitados en un grupo de agricultores o empresas con un problema severo, homogéneo y de fácil comunicación.</p>
+                        <p class="mt-2"><strong>The Core (MIT Paso 10):</strong> No es solo "el software". Es la ventaja científica que tu equipo posee y que te defiende de copias veloces en la feria de proyectos de manera legal.</p>
+                    `;
+                    break;
+                case 4:
+                    textHtml = `
+                        <p><strong>Nivel TRL (NASA/Horizonte 2020):</strong> Mide objetivamente qué tan lejos de la comercialización real está tu tecnología. Una feria escolar generalmente califica con éxito prototipos de TRL 3 a TRL 5.</p>
+                        <p class="mt-2"><strong>Rigor Legítimo:</strong> Declarar TRL 9 sin poseer producción en volumen es un fallo de auditoría. Es preferible documentar un TRL 4 legítimo y bien evaluado que un TRL inflado.</p>
+                    `;
+                    break;
+                case 5:
+                    textHtml = `
+                        <p><strong>Arquitectura de MVP:</strong> Debe representar la mínima inversión de tiempo de código o soldadura para comprobar la hipótesis del paso anterior. Evita el "scope creep" o sobreingeniería.</p>
+                        <p class="mt-2"><strong>Colaboración Escolar (10 Alumnos Máx):</strong> Dividir el trabajo en grupos diferenciados permite simular un entorno ágil corporativo (e.g. Hardware vs Software vs Negocios).</p>
+                    `;
+                    break;
+                case 6:
+                    textHtml = `
+                        <p><strong>Auditoría IA Co-Pilot:</strong> Este asistente utiliza el procesador cognitivo de Gemini para analizar la legibilidad académica, contrastando que tu diseño de MVP soporte genuinamente el nivel de TRL reclamado.</p>
+                        <p class="mt-2">Recibe el reporte y ajusta tus entradas en los Pasos anteriores para pulir la calidad de la entrega final.</p>
+                    `;
+                    break;
+                case 7:
+                    textHtml = `
+                        <p><strong>Compilación IEEE LaTeX:</strong> Las transacciones de la IEEE requieren un rigor tipográfico específico. Este exportador traduce automáticamente tus hipótesis Lean y equipos escolares a formato de publicación.</p>
+                    `;
+                    break;
+            }
+            content.innerHTML = textHtml;
+        }
+
+        // Initialize Application
         window.onload = function() {
             renderHypotheses();
+            renderStudentsAndTeams();
+            updateTrlUi();
             updateTheoryInsight(1);
         }
     </script>
