@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-slate-950 text-slate-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lean Startup para Proyectos Técnicos (IEEE, MIT & Harvard)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 text-white p-2 rounded-lg font-bold shadow-lg shadow-indigo-500/20">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
+                        Lean Tech-Startup <span class="text-xs bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded-full">IEEE Edition</span>
+                    </h1>
+                    <p class="text-xs text-slate-400">MIT & Harvard Entrepreneurship Framework</p>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-2 text-xs text-slate-400">
+                <span>Rigor Académico</span>
+                <span class="text-slate-600">•</span>
+                <span>Validación de Ingeniería</span>
+                <span class="text-slate-600">•</span>
+                <span>Feria de Proyectos</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
+        
+        <!-- Left Panel: Navigation & Guide -->
+        <div class="w-full lg:w-1/3 flex flex-col gap-6">
+            <!-- Navigation Cards -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+                <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">Etapas de Desarrollo</h3>
+                <nav class="space-y-2" id="step-nav">
+                    <!-- Nav Item 1 -->
+                    <button onclick="goToStep(1)" id="nav-btn-1" class="w-full text-left flex items-start p-3 rounded-lg transition-all border border-transparent bg-indigo-950/40 border-indigo-500/30 text-indigo-300">
+                        <span class="bg-indigo-900 text-indigo-200 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">1</span>
+                        <div>
+                            <p class="font-medium text-sm">Cimientos Académicos</p>
+                            <p class="text-xs text-indigo-400/80">MIT & Harvard Frameworks</p>
+                        </div>
+                    </button>
+                    <!-- Nav Item 2 -->
+                    <button onclick="goToStep(2)" id="nav-btn-2" class="w-full text-left flex items-start p-3 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">
+                        <span class="bg-slate-800 text-slate-400 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">2</span>
+                        <div>
+                            <p class="font-medium text-sm">Mercado & Persona (MIT)</p>
+                            <p class="text-xs text-slate-500">Segmentación & Perfil de Playa</p>
+                        </div>
+                    </button>
+                    <!-- Nav Item 3 -->
+                    <button onclick="goToStep(3)" id="nav-btn-3" class="w-full text-left flex items-start p-3 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">
+                        <span class="bg-slate-800 text-slate-400 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">3</span>
+                        <div>
+                            <p class="font-medium text-sm">Hipótesis Falsables (HBS)</p>
+                            <p class="text-xs text-slate-500">Formulación Rigurosa Científica</p>
+                        </div>
+                    </button>
+                    <!-- Nav Item 4 -->
+                    <button onclick="goToStep(4)" id="nav-btn-4" class="w-full text-left flex items-start p-3 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">
+                        <span class="bg-slate-800 text-slate-400 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">4</span>
+                        <div>
+                            <p class="font-medium text-sm">Diseño de MVP & Métricas</p>
+                            <p class="text-xs text-slate-500">Arquitectura Técnica y KPI de Ingeniería</p>
+                        </div>
+                    </button>
+                    <!-- Nav Item 5 -->
+                    <button onclick="goToStep(5)" id="nav-btn-5" class="w-full text-left flex items-start p-3 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">
+                        <span class="bg-slate-800 text-slate-400 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">5</span>
+                        <div>
+                            <p class="font-medium text-sm">Exportador IEEE Paper</p>
+                            <p class="text-xs text-slate-500">Generador de LaTeX Académico</p>
+                        </div>
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Theory Insights Card (Contextual) -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5" id="theory-card">
+                <div class="flex items-center space-x-2 text-indigo-400 mb-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    <h4 class="font-semibold text-sm">Rigor MIT & Harvard</h4>
+                </div>
+                <div id="theory-content" class="text-xs text-slate-400 space-y-2 leading-relaxed">
+                    <!-- Dynamic content based on step -->
+                    <p><strong>MIT (Bill Aulet):</strong> Recomienda enfocarse en un solo mercado de playa (Beachhead Market) para dominar el 20% de participación de mercado antes de escalar. Esto mitiga la dispersión de recursos.</p>
+                    <p><strong>Harvard (Thomas Eisenmann):</strong> El enfoque "Hypothesis-Driven" postula que un startup debe formular experimentos científicos claros y métricas antes de comprometer capital. Esto evita el sesgo de confirmación.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Interactive Step Workspace -->
+        <div class="w-full lg:w-2/3 flex flex-col gap-6">
+            
+            <!-- Step 1 Workspace -->
+            <div id="step-1-panel" class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold text-white">1. Cimientos Académicos: MIT & Harvard Frameworks</h2>
+                    <p class="text-sm text-slate-400 mt-1">Antes de desarrollar tu tecnología para la feria de proyectos, integra los principios ágiles y de negocios más reconocidos de las universidades de élite.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-lg">
+                        <div class="flex items-center space-x-2 text-indigo-400 mb-2">
+                            <span class="text-xs font-bold px-2 py-0.5 rounded bg-indigo-950 border border-indigo-900">MIT</span>
+                            <span class="font-semibold text-sm">24 Pasos de Disciplined Entrepreneurship</span>
+                        </div>
+                        <ul class="text-xs text-slate-400 space-y-2 list-disc list-inside">
+                            <li><strong>Segmentación de Mercado:</strong> No crees tecnología sin un cliente específico.</li>
+                            <li><strong>Beachhead Market:</strong> Escoge un nicho ultra-enfocado donde puedas ser el líder.</li>
+                            <li><strong>Persona:</strong> Diseña detalladamente al usuario final y comprador tecnológico.</li>
+                            <li><strong>El Núcleo (Core):</strong> Define tu ventaja tecnológica que los competidores no pueden copiar.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-lg">
+                        <div class="flex items-center space-x-2 text-emerald-400 mb-2">
+                            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 border border-emerald-900">Harvard</span>
+                            <span class="font-semibold text-sm">Hypothesis-Driven Entrepreneurship</span>
+                        </div>
+                        <ul class="text-xs text-slate-400 space-y-2 list-disc list-inside">
+                            <li><strong>Falsabilidad:</strong> Tus hipótesis deben poder demostrarse falsas con datos irrefutables.</li>
+                            <li><strong>LTV > 3x CAC:</strong> La relación del valor de cliente a costo de adquisición debe ser viable.</li>
+                            <li><strong>Prueba y Error Riguroso:</strong> Planifica experimentos con controles, tal como un estudio científico.</li>
+                            <li><strong>Pivote Sistémico:</strong> Decisiones basadas en el rechazo de hipótesis científicas, no corazonadas.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="border-t border-slate-800 pt-6">
+                    <h3 class="text-sm font-semibold text-white mb-3">Introduce los Datos Base de tu Proyecto</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs text-slate-400 font-semibold mb-1">TÍTULO DEL PROYECTO (Formato Académico IEEE / Feria)</label>
+                            <input type="text" id="proj-title" placeholder="Ej. Un Sistema IoT de Bajo Costo para Monitoreo de Suelos de Cultivo Basado en Edge Computing..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 font-semibold mb-1">RESUMEN DEL PROYECTO (Abstract Académico - máx. 150 palabras)</label>
+                            <textarea id="proj-abstract" rows="3" placeholder="Este paper presenta el diseño y validación de un sistema que resuelve el problema de..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-end pt-4">
+                    <button onclick="goToStep(2)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
+                        Siguiente: Mercado & Persona (MIT)
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2 Workspace -->
+            <div id="step-2-panel" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold text-white">2. Segmentación de Mercado & Beachhead (MIT)</h2>
+                    <p class="text-sm text-slate-400 mt-1">Un error técnico común es querer venderle a todo el mundo. El MIT propone elegir un único "Beachhead Market" (Mercado de Playa) para concentrar fuerzas.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-3">
+                        <h3 class="text-xs font-semibold uppercase text-indigo-400">Definición del Beachhead Market</h3>
+                        <p class="text-xs text-slate-400">Define el segmento de clientes más urgente, que tenga acceso a canales similares y que ya esté tratando de solucionar el problema de manera ineficiente.</p>
+                        <input type="text" id="proj-beachhead" placeholder="Ej. Pequeños agricultores de arándanos de la región central que exportan y usan riego manual..." class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-3">
+                            <h3 class="text-xs font-semibold uppercase text-emerald-400">La Persona del MIT (Usuario Final Clave)</h3>
+                            <p class="text-xs text-slate-400">La representación detallada de tu cliente ideal. No es un dato genérico, define comportamiento y frustraciones reales.</p>
+                            <div class="space-y-2">
+                                <input type="text" id="persona-name" placeholder="Nombre representativo (Ej: Carlos, Agricultor)" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+                                <textarea id="persona-pains" rows="2" placeholder="Principales dolores y frustraciones..." class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-3">
+                            <h3 class="text-xs font-semibold uppercase text-indigo-400">El "Core" Tecnológico</h3>
+                            <p class="text-xs text-slate-400">Tu ventaja injusta técnica o científica. ¿Qué tiene tu algoritmo, hardware o proceso que es extremadamente difícil de clonar?</p>
+                            <textarea id="proj-core" rows="3" placeholder="Ej. Algoritmo de calibración auto-adaptativo que requiere un 80% menos de energía que las soluciones comerciales existentes..." class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between pt-4 border-t border-slate-800">
+                    <button onclick="goToStep(1)" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        Atrás
+                    </button>
+                    <button onclick="goToStep(3)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
+                        Siguiente: Formular Hipótesis
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3 Workspace -->
+            <div id="step-3-panel" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold text-white">3. Matriz de Hipótesis Falsables (Harvard)</h2>
+                    <p class="text-sm text-slate-400 mt-1">Harvard Business School propone tratar las hipótesis del negocio bajo el método científico. Deben ser específicas, cuantificables y falsables ($H_0$).</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-indigo-950/20 border border-indigo-900/40 p-4 rounded-lg">
+                        <p class="text-xs text-indigo-300 italic">
+                            <strong>Fórmula de Hipótesis Científico-Comercial:</strong><br>
+                            "Creemos que [Segmento de Clientes] experimenta [Problema] y estará dispuesto a hacer [Acción de Validación] utilizando nuestra solución, logrando una tasa de conversión superior a [X]%."
+                        </p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xs font-semibold uppercase text-slate-400">Hipótesis del Proyecto</h3>
+                            <button onclick="addHypothesis()" class="text-xs bg-indigo-600/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-600/40 px-2.5 py-1 rounded flex items-center gap-1 transition-all">
+                                <span>+ Agregar Hipótesis</span>
+                            </button>
+                        </div>
+
+                        <!-- Interactive Hypotheses Grid -->
+                        <div class="overflow-x-auto border border-slate-800 rounded-lg">
+                            <table class="w-full text-left border-collapse bg-slate-950 text-xs">
+                                <thead>
+                                    <tr class="bg-slate-900 text-slate-300 border-b border-slate-800">
+                                        <th class="p-3">Código</th>
+                                        <th class="p-3">Hipótesis Formulada (Falsable)</th>
+                                        <th class="p-3">Métrica de Validación (Criterio de Éxito)</th>
+                                        <th class="p-3">Gravedad / Riesgo</th>
+                                        <th class="p-3 text-right">Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="hypotheses-table-body">
+                                    <!-- Populated dynamically via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between pt-4 border-t border-slate-800">
+                    <button onclick="goToStep(2)" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        Atrás
+                    </button>
+                    <button onclick="goToStep(4)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
+                        Siguiente: MVP & Métricas
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4 Workspace -->
+            <div id="step-4-panel" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold text-white">4. Diseño del MVP Técnico & Métricas de Ingeniería</h2>
+                    <p class="text-sm text-slate-400 mt-1">El Producto Mínimo Viable (MVP) para una feria de proyectos de base técnica debe demostrar viabilidad de hardware/software combinada con interés real.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-3">
+                        <h3 class="text-xs font-semibold uppercase text-indigo-400">1. Arquitectura Técnica de tu MVP</h3>
+                        <p class="text-xs text-slate-400">Describe el alcance mínimo de ingeniería. ¿Cuál es el núcleo técnico indispensable para realizar la validación?</p>
+                        <textarea id="mvp-tech" rows="3" placeholder="Ej. Un microcontrolador ESP32 con un sensor analógico de humedad conectado a Firebase, mostrando una interfaz simplificada en tiempo real..." class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"></textarea>
+                    </div>
+
+                    <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-3">
+                        <h3 class="text-xs font-semibold uppercase text-emerald-400">2. Estrategia de Experimento</h3>
+                        <p class="text-xs text-slate-400">¿Cómo pondrás este MVP técnico frente al cliente para validar tus hipótesis del Paso 3?</p>
+                        <select id="mvp-strategy" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+                            <option value="conserje">MVP Conserje (Operación manual del servicio técnico detrás de cámaras)</option>
+                            <option value="mago">MVP Mago de Oz (La interfaz funciona, los cálculos/procesamientos los haces tú)</option>
+                            <option value="humo">MVP de Humo / Landing Page (Simulador técnico, captura de emails)</option>
+                            <option value="prototipo">Prototipo Alfa Funcional (Prueba en entorno real con Early Adopters)</option>
+                        </select>
+                        <textarea id="mvp-experiment-desc" rows="2" placeholder="Especifica cómo ejecutarás este experimento..." class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"></textarea>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-4">
+                    <h3 class="text-xs font-semibold uppercase text-indigo-400">3. El Embudo de Validación de Ingeniería</h3>
+                    <p class="text-xs text-slate-400">Asigna métricas de ingeniería o negocio para cada fase del embudo adaptado para tu proyecto.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="p-3 bg-slate-900 border border-slate-800 rounded">
+                            <label class="block text-[10px] text-slate-400 font-bold mb-1">ADQUISICIÓN / ATENCIÓN</label>
+                            <input type="text" id="metric-acq" placeholder="Ej. 100 visitas a ficha de GitHub o Web" class="w-full bg-slate-950 border border-slate-800 rounded p-1.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+                        </div>
+                        <div class="p-3 bg-slate-900 border border-slate-800 rounded">
+                            <label class="block text-[10px] text-slate-400 font-bold mb-1">ACTIVACIÓN (Interés Real)</label>
+                            <input type="text" id="metric-act" placeholder="Ej. 20 registros para usar demo técnica" class="w-full bg-slate-950 border border-slate-800 rounded p-1.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+                        </div>
+                        <div class="p-3 bg-slate-900 border border-slate-800 rounded">
+                            <label class="block text-[10px] text-slate-400 font-bold mb-1">MONETIZACIÓN / RETENCIÓN</label>
+                            <input type="text" id="metric-mon" placeholder="Ej. Intención de pre-compra firmada" class="w-full bg-slate-950 border border-slate-800 rounded p-1.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between pt-4 border-t border-slate-800">
+                    <button onclick="goToStep(3)" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        Atrás
+                    </button>
+                    <button onclick="generateIEEEPaper(); goToStep(5);" class="bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
+                        Generar Paper IEEE LaTeX
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 5 Workspace (IEEE LaTeX Generator) -->
+            <div id="step-5-panel" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-white">5. Tu Estructura de Paper de Validación en Formato IEEE</h2>
+                        <p class="text-sm text-slate-400 mt-1">Hemos procesado tu proyecto. Aquí tienes el código LaTeX completo listo para compilar o copiar en tu reporte académico.</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="copyIEEEToClipboard()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-all flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m-5 10h5m-4 4h4"></path></svg>
+                            Copiar Código
+                        </button>
+                        <button onclick="downloadLatexFile()" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-xs font-semibold px-4 py-2.5 rounded-lg transition-all flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Descargar .tex
+                        </button>
+                    </div>
+                </div>
+
+                <div class="relative bg-slate-950 rounded-lg p-4 border border-slate-800">
+                    <pre id="latex-output" class="code-font text-xs text-slate-300 overflow-x-auto whitespace-pre-wrap leading-relaxed max-h-96">
+                        <!-- LaTeX Generated dynamically -->
+                    </pre>
+                </div>
+
+                <div class="bg-indigo-950/20 border border-indigo-900/40 p-4 rounded-lg space-y-2">
+                    <h4 class="text-xs font-bold text-indigo-300">💡 Siguientes Pasos en tu Feria de Proyectos:</h4>
+                    <p class="text-xs text-slate-400">
+                        Este código sigue estrictamente la plantilla original de IEEE Transactions. Copia este contenido y utilízalo en plataformas como **Overleaf** o tu compilador local de LaTeX para generar un PDF impecable que demuestre la viabilidad científica de tu proyecto técnico.
+                    </p>
+                </div>
+
+                <div class="flex justify-start pt-4 border-t border-slate-800">
+                    <button onclick="goToStep(4)" class="border border-slate-700 hover:border-slate-600 text-slate-300 text-sm font-semibold px-5 py-2.5 rounded-lg transition-all flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        Atrás
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-900/40 py-6 mt-12 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 Lean Tech-Startup Accelerator. Integrando metodologías del MIT y Harvard para Ingenieros.</p>
+        </div>
+    </footer>
+
+    <!-- JS Logic -->
+    <script>
+        // Default Local State
+        let hypotheses = [
+            { id: 'H1', type: 'Problema', text: 'Los agricultores gastan más del 30% de su tiempo midiendo de forma analógica variables de suelo ineficientemente.', metric: '8 de cada 10 entrevistados confirman pérdida de tiempo', gravity: 'Alta' },
+            { id: 'H2', type: 'Solución', text: 'Nuestra red IoT móvil autocalibrante reduce un 50% el costo de instrumentación agrícola tradicional.', metric: 'Menor costo de sensor verificado en laboratorio (<$15USD)', gravity: 'Media' }
+        ];
+
+        // UI Step Navigation
+        function goToStep(step) {
+            // Hide all panels
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById(`step-${i}-panel`).classList.add('hidden');
+                
+                // Reset Nav Style
+                const btn = document.getElementById(`nav-btn-${i}`);
+                if (btn) {
+                    btn.className = "w-full text-left flex items-start p-3 rounded-lg transition-all border border-transparent text-slate-400 hover:bg-slate-800/50 hover:text-slate-200";
+                    const span = btn.querySelector('span');
+                    if (span) span.className = "bg-slate-800 text-slate-400 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5";
+                }
+            }
+
+            // Show current panel
+            document.getElementById(`step-${step}-panel`).classList.remove('hidden');
+
+            // Set active style
+            const activeBtn = document.getElementById(`nav-btn-${step}`);
+            if (activeBtn) {
+                activeBtn.className = "w-full text-left flex items-start p-3 rounded-lg transition-all border border-transparent bg-indigo-950/40 border-indigo-500/30 text-indigo-300";
+                const activeSpan = activeBtn.querySelector('span');
+                if (activeSpan) activeSpan.className = "bg-indigo-900 text-indigo-200 rounded-md w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5";
+            }
+
+            updateTheoryInsight(step);
+        }
+
+        // Change Dynamic Theory Notes based on current active step
+        function updateTheoryInsight(step) {
+            const content = document.getElementById('theory-content');
+            let textHtml = "";
+
+            switch(step) {
+                case 1:
+                    textHtml = `
+                        <p class="font-bold text-indigo-400 mb-1">Cimientos Científicos</p>
+                        <p><strong>MIT (Bill Aulet):</strong> Postula que el emprendedor disciplinado se enfoca obsesivamente en la Segmentación. La invención técnica sin mercado vale $0.</p>
+                        <p class="mt-2"><strong>Harvard Business School:</strong> Entiende que el 75% de los emprendimientos de base tecnológica fracasan por construir cosas que nadie desea. El método de hipótesis-driven valida la tracción del mercado de manera incremental.</p>
+                    `;
+                    break;
+                case 2:
+                    textHtml = `
+                        <p class="font-bold text-indigo-400 mb-1">Beachhead Market & Core</p>
+                        <p><strong>Beachhead Market:</strong> Debe ser un mercado donde el cliente tenga capital disponible, un proceso de decisión de compra homogéneo, y donde el boca a boca sea el canal de aceleración definitivo.</p>
+                        <p class="mt-2"><strong>El Core (MIT Paso 10):</strong> Es tu foso defensivo tecnológico. Es la patente, el secreto industrial o el diseño de arquitectura imposible de copiar ágilmente por un seguidor.</p>
+                    `;
+                    break;
+                case 3:
+                    textHtml = `
+                        <p class="font-bold text-indigo-400 mb-1">Estrategia de Hipótesis de HBS</p>
+                        <p><strong>Definición de Falsabilidad:</strong> Una hipótesis es falsable si existe un experimento medible capaz de demostrar su falsedad de manera unívoca.</p>
+                        <p class="mt-2">En tu Paper IEEE, el apartado de validación científica de mercado mostrará los resultados de rechazar o aceptar estas hipótesis de manera empírica.</p>
+                    `;
+                    break;
+                case 4:
+                    textHtml = `
+                        <p class="font-bold text-indigo-400 mb-1">Métricas de Ingeniería (KPIs)</p>
+                        <p>Evita métricas vanidosas (likes, descargas sin uso). Mide el costo real de construir la tecnología y compáralo con el valor que aporta al agricultor, médico o usuario final.</p>
+                        <p class="mt-2"><strong>Unidades de Validación:</strong> Utiliza tasas de retención técnica e interactividad real del MVP.</p>
+                    `;
+                    break;
+                case 5:
+                    textHtml = `
+                        <p class="font-bold text-indigo-400 mb-1">Estructuración IEEE LaTeX</p>
+                        <p>Las secciones clásicas de IEEE se asocian con tu validación Lean:</p>
+                        <ul class="list-disc list-inside space-y-1 mt-1">
+                            <li><strong>I. Intro:</strong> El problema del cliente y la propuesta de valor.</li>
+                            <li><strong>II. Mercado de Playa:</strong> El nicho objetivo.</li>
+                            <li><strong>III. Hipótesis:</strong> Las hipótesis de ingeniería.</li>
+                            <li><strong>IV. MVP & Metodología:</strong> Tu diseño de experimento.</li>
+                        </ul>
+                    `;
+                    break;
+            }
+            content.innerHTML = textHtml;
+        }
+
+        // Add dynamic Hypothesis to table
+        function renderHypotheses() {
+            const body = document.getElementById('hypotheses-table-body');
+            body.innerHTML = '';
+            
+            hypotheses.forEach((hyp, index) => {
+                const tr = document.createElement('tr');
+                tr.className = "border-b border-slate-900 hover:bg-slate-900/30 transition-colors";
+                tr.innerHTML = `
+                    <td class="p-3 text-slate-400 font-bold">${hyp.id}</td>
+                    <td class="p-3">
+                        <textarea onchange="updateHypothesis(${index}, 'text', this.value)" class="w-full bg-transparent border-b border-transparent focus:border-indigo-500 focus:outline-none p-1 text-slate-200 resize-none text-xs" rows="2">${hyp.text}</textarea>
+                    </td>
+                    <td class="p-3">
+                        <input type="text" onchange="updateHypothesis(${index}, 'metric', this.value)" value="${hyp.metric}" class="w-full bg-transparent border-b border-transparent focus:border-indigo-500 focus:outline-none p-1 text-slate-300 text-xs">
+                    </td>
+                    <td class="p-3">
+                        <select onchange="updateHypothesis(${index}, 'gravity', this.value)" class="bg-slate-900 text-slate-300 rounded p-1 text-[11px] focus:outline-none border border-slate-800">
+                            <option value="Alta" ${hyp.gravity === 'Alta' ? 'selected' : ''}>Alta</option>
+                            <option value="Media" ${hyp.gravity === 'Media' ? 'selected' : ''}>Media</option>
+                            <option value="Baja" ${hyp.gravity === 'Baja' ? 'selected' : ''}>Baja</option>
+                        </select>
+                    </td>
+                    <td class="p-3 text-right">
+                        <button onclick="removeHypothesis(${index})" class="text-rose-400 hover:text-rose-300 font-semibold text-xs px-2 py-1 bg-rose-500/10 rounded border border-rose-500/20">Eliminar</button>
+                    </td>
+                `;
+                body.appendChild(tr);
+            });
+        }
+
+        function addHypothesis() {
+            const nextId = `H${hypotheses.length + 1}`;
+            hypotheses.push({
+                id: nextId,
+                type: 'Nueva',
+                text: 'Creemos que el usuario [X] logrará [Y] medido mediante [Z].',
+                metric: 'Tasa superior al X%',
+                gravity: 'Media'
+            });
+            renderHypotheses();
+        }
+
+        function removeHypothesis(index) {
+            hypotheses.splice(index, 1);
+            // Re-index
+            hypotheses.forEach((hyp, i) => {
+                hyp.id = `H${i + 1}`;
+            });
+            renderHypotheses();
+        }
+
+        function updateHypothesis(index, field, value) {
+            hypotheses[index][field] = value;
+        }
+
+        // Generate Latex Output with structured data
+        function generateIEEEPaper() {
+            const title = document.getElementById('proj-title').value || "SISTEMA INTEGRADO DE BASE TECNOLÓGICA Y VALIDACIÓN CIENTÍFICA LEAN STARTUP";
+            const abstract = document.getElementById('proj-abstract').value || "Este paper describe la validación experimental y de mercado de una propuesta tecnológica de ingeniería, evaluando la tracción real y validación de hipótesis de negocio bajo metodologías del MIT y Harvard.";
+            const beachhead = document.getElementById('proj-beachhead').value || "Mercado industrial altamente focalizado (Early Adopters de tecnología).";
+            const personaName = document.getElementById('persona-name').value || "Carlos, Ingeniero de Planta";
+            const personaPains = document.getElementById('persona-pains').value || "Dificultad de monitorización rápida, ineficiencia técnica y sobrecostos.";
+            const core = document.getElementById('proj-core').value || "Algoritmo o sistema integrado de baja latencia con arquitectura patentable.";
+            const mvpTech = document.getElementById('mvp-tech').value || "Prototipo funcional a escala con integraciones API mínimas.";
+            const mvpStrategy = document.getElementById('mvp-strategy').value;
+            const mvpStrategyDesc = document.getElementById('mvp-experiment-desc').value || "Ejecución del experimento con un conjunto inicial de usuarios beta.";
+            
+            // Metrics
+            const metricAcq = document.getElementById('metric-acq').value || "Sin definir";
+            const metricAct = document.getElementById('metric-act').value || "Sin definir";
+            const metricMon = document.getElementById('metric-mon').value || "Sin definir";
+
+            // LaTeX formatting of Hypotheses
+            let latexHypotheses = "";
+            hypotheses.forEach(hyp => {
+                latexHypotheses += `\\item \\textbf{Hipótesis (${hyp.id}) [Riesgo ${hyp.gravity}]:} ${hyp.text} \\\\ \\textit{Criterio de Validación:} ${hyp.metric}\n`;
+            });
+
+            const latexCode = `\\documentclass[journal,10pt,compsoc]{IEEEtran}
+\\usepackage[utf8]{inputenc}
+\\usepackage{amsmath}
+\\usepackage{booktabs}
+\\usepackage{graphicx}
+\\usepackage{hyperref}
+
+\\begin{document}
+
+\\title{${title.toUpperCase()}}
+
+\\author{Equipo de Innovación Tecnológica \\\\ \\small Feria de Proyectos de Base Científica}
+
+\\maketitle
+
+\\begin{abstract}
+${abstract}
+\\end{abstract}
+
+\\begin{IEEEkeywords}
+Lean Startup, Disciplined Entrepreneurship, MIT Framework, Harvard Hypothesis-Driven, Formato IEEE, Innovación Tecnológica.
+\\end{IEEEkeywords}
+
+\\section{Introducción}
+La ingeniería moderna exige que el diseño de sistemas de alta tecnología no solo cumpla con la viabilidad técnica de laboratorio, sino con la viabilidad real y comercial en entornos de producción. Utilizando la metodología de \\textbf{Lean Startup} popularizada por Eric Ries, combinada con la rigurosidad científica de la iniciativa \\textbf{Hypothesis-Driven Entrepreneurship de Harvard} y los pasos detallados del \\textbf{MIT (Disciplined Entrepreneurship)}, este documento detalla el proceso de diseño, experimentación y validación empírica de un prototipo técnico innovador.
+
+\\section{Segmentación de Mercado y Beachhead (MIT Framework)}
+\\subsection{Segmentación del Mercado de Playa (Beachhead Market)}
+De acuerdo con Bill Aulet (MIT), se identificó un único segmento inicial donde nuestra tecnología posee el mayor potencial de adopción ágil:
+\\begin{itemize}
+    \\item \\textbf{Definición del Mercado:} ${beachhead}
+    \\item \\textbf{Persona Clave de Validación:} ${personaName}. \\\\ \\textit{Puntos de dolor identificados:} ${personaPains}
+\\end{itemize}
+
+\\subsection{Ventaja Injusta de Ingeniería (The Technical Core)}
+El pilar diferenciador o núcleo que protege nuestra propiedad intelectual y tecnológica se define como:
+\\\\ \\textbf{Core:} ${core}
+
+\\section{Formulación de Hipótesis Científicas (Harvard Business School Framework)}
+Siguiendo los estándares del profesor Thomas Eisenmann de Harvard, formulamos un conjunto de hipótesis falsables ($H_0$). La validación técnica de mercado asume que el sistema es viable solo si estas hipótesis son aceptadas con significancia empírica:
+
+\\begin{itemize}
+${latexHypotheses || '\\item \\textit{No se especificaron hipótesis dinámicas todavía.}'}
+\\end{itemize}
+
+\\section{Diseño del Prototipo Mínimo Viable (MVP) y Experimento}
+\\subsection{Arquitectura Técnica del MVP}
+La arquitectura de hardware y software del Producto Mínimo Viable desarrollado comprende la siguiente infraestructura técnica mínima viable para la feria de proyectos:
+\\\\ \\textit{Descripción:} ${mvpTech}
+
+\\subsection{Metodología de Validación y Estrategia Experimental}
+El experimento fue estructurado bajo la estrategia de: \\textbf{MVP tipo ${mvpStrategy.toUpperCase()}}.
+\\\\ \\textit{Detalles de la estrategia:} ${mvpStrategyDesc}
+
+\\section{Resultados y Métricas de Validación de Ingeniería}
+Para evaluar la tracción empírica e interés del mercado de playa, se utilizó el embudo de métricas de validación con los siguientes objetivos cuantificables:
+
+\\begin{itemize}
+    \\item \\textbf{Adquisición / Atención:} ${metricAcq}
+    \\item \\textbf{Activación (Demostración de Interés Real):} ${metricAct}
+    \\item \\textbf{Monetización / Retención (Sostenibilidad):} ${metricMon}
+\\end{itemize}
+
+\\section{Conclusiones y Decisiones de Continuidad (Pivotar o Perseverar)}
+La aplicación del ciclo iterativo \\textit{Construir-Medir-Aprender} determinó un camino estructurado de validación científica, alineando los objetivos de ingeniería de hardware/software con un nicho de mercado sumamente específico antes de escalar de forma costosa la solución en la feria de proyectos.
+
+\\end{document}
+`;
+            document.getElementById('latex-output').textContent = latexCode;
+        }
+
+        // Copy to clipboard fallback integration
+        function copyIEEEToClipboard() {
+            const codeText = document.getElementById('latex-output').textContent;
+            
+            // Fallback legacy method due to iframe restrictions
+            const textarea = document.createElement('textarea');
+            textarea.value = codeText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                alert('¡Código LaTeX copiado al portapapeles con éxito!');
+            } catch (err) {
+                console.error('Error al copiar', err);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        // Download as local .tex file
+        function downloadLatexFile() {
+            const codeText = document.getElementById('latex-output').textContent;
+            const blob = new Blob([codeText], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'paper_lean_ieee.tex';
+            link.click();
+            URL.revokeObjectURL(link.href);
+        }
+
+        // Initialize App on DOM Ready
+        window.onload = function() {
+            renderHypotheses();
+            updateTheoryInsight(1);
+        }
+    </script>
+</body>
+</html>
